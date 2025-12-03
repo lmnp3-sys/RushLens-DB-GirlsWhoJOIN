@@ -1,8 +1,7 @@
-# Fall 2025 CS 3200 Project Template
+# RushLens - Store Tracking System
 
-This is a template repo for Dr. Fontenot's Fall 2025 CS 3200 Course Project. 
-
-It includes most of the infrastructure setup (containers), sample databases, and example UI pages. Explore it fully and ask questions!
+RushLens allows users to understand how busy a space is without even being there. Driven by both user-entered and sensor-generated data, RushLens collects and analyzes data patterns to present high-level information that informs user decision-making. With this, users can see how busy places like Curry, Starbucks, Snell, or even the laundry rooms, will be before users even get there. This addresses pain points for a variety of demographics: allowing business owners to see a summarized view of their busiest times and how users interact with their respective business page on the app, and creating a way for customers to optimize their decision-making before physically arriving at a business. 
+RushLens also supports the system administrators and data analysts who keep the platform running smoothly. System admins use internal tools to connect devices, check that sensors are working properly, and make sure data stays accurate and secure. Data analysts will also review traffic patterns over time to identify when spaces are busiest and share findings that help managers improve their operations. For everyday users, RushLens takes all this behind-the-scenes complexity and presents it as simple, useful information: how long the wait will be, how many people are currently in a space, and whether they're likely to find an open seat or machine. By turning unreliable guessing into clear predictions, RushLens helps students and customers make better choices about when and where to go, while saving time and improving their overall experience!
 
 ## Prerequisites
 
@@ -131,3 +130,5 @@ _Note_: This project only contains the infrastructure for a hypothetical ML mode
    - We've put a sample (read _fake_) ML model in the `model01.py` file. The `predict` function will be called by the Flask REST API to perform '_real-time_' prediction based on model parameter values that are stored in the database. **Important**: you would never want to hard code the model parameter weights directly in the prediction function.
 1. The prediction route for the REST API is in `api/backend/customers/customer_routes.py`. Basically, it accepts two URL parameters and passes them to the `prediction` function in the `ml_models` module. The `prediction` route/function packages up the value(s) it receives from the model's `predict` function and send its back to Streamlit as JSON.
 1. Back in streamlit, check out `app/src/pages/11_Prediction.py`. Here, I create two numeric input fields. When the button is pressed, it makes a request to the REST API URL `/c/prediction/.../...` function and passes the values from the two inputs as URL parameters. It gets back the results from the route and displays them. Nothing fancy here.
+
+# Add more sections if needed
