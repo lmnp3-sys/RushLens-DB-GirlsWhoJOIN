@@ -22,9 +22,8 @@ CREATE TABLE IF NOT EXISTS UserInput(
         ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
--- DROP & CREATE table: FootTrafficRecord
-DROP TABLE IF EXISTS FootTrafficRecord;
-CREATE TABLE IF NOT EXISTS FootTrafficRecord(
+-- DROP & CRDROP TABL
+CREATE TABLE IF
     traffic_id INT PRIMARY KEY,
     data_id INT,
     user_id INT,
@@ -51,7 +50,7 @@ CREATE TABLE IF NOT EXISTS StoreDailyStats(
     peak_hour INT,
     lowest_hour INT,
     page_views INT,
-    FOREIGN KEY (traffic_id) REFERENCES FootTrafficRecord (traffic_id)
+    FOREIGN KEY (traffic_id)(traffic_id)
         ON DELETE RESTRICT ON UPDATE RESTRICT,
     FOREIGN KEY (store_id) REFERENCES store (store_id)
         ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -200,4 +199,39 @@ INSERT INTO User (user_id,accountType) VALUES (
 (User_id, accountType) values (34, 'community member');
 )
 
-
+INSERT INTO FootTrafficRecord (traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) VALUES (
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (1, 158, 111, 128, 36, 3, '2025-08-19 00:45:31');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (2, 89, 35, 288, 58, 38, '2025-04-13 17:54:11');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (3, 80, 109, 118, 59, 77, '2025-02-22 15:34:43');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (4, 57, 75, 187, 18, 123, '2025-02-13 16:20:45');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (5, 200, 11, 95, 6, 110, '2025-08-19 07:23:06');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (6, 210, 128, 186, 26, 52, '2025-11-02 22:59:54');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (7, 235, 195, 128, 41, 34, '2025-02-06 16:23:02');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (8, 185, 219, 277, 7, 87, '2025-02-17 12:36:20');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (9, 42, 8, 259, 28, 93, '2024-12-19 05:59:24');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (10, 38, 192, 298, 10, 70, '2025-07-08 00:15:05');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (11, 261, 62, 183, 56, 37, '2025-08-17 00:41:52');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (12, 24, 164, 155, 63, 98, '2025-12-02 23:33:35');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (13, 41, 109, 15, 35, 44, '2025-08-31 16:23:56');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (14, 208, 130, 183, 60, 83, '2025-09-06 06:20:48');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (15, 55, 24, 181, 21, 101, '2024-12-12 21:39:19');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (16, 29, 127, 107, 16, 103, '2025-09-20 07:08:32');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (17, 197, 143, 8, 31, 118, '2025-02-13 12:31:35');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (18, 70, 118, 9, 13, 48, '2025-07-05 02:53:10');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (19, 132, 157, 60, 53, 148, '2025-09-30 23:15:28');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (20, 80, 43, 241, 21, 39, '2025-11-29 13:45:32');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (21, 27, 68, 183, 26, 20, '2025-05-03 05:36:53');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (22, 81, 238, 146, 17, 16, '2025-02-25 07:46:36');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (23, 89, 34, 260, 51, 40, '2025-09-04 22:54:04');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (24, 3, 170, 264, 63, 48, '2025-11-15 14:36:40');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (25, 142, 116, 188, 59, 53, '2025-09-12 09:23:03');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (26, 261, 75, 192, 40, 49, '2025-07-21 01:05:03');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (27, 14, 29, 210, 32, 31, '2025-11-13 04:06:24');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (28, 164, 119, 84, 26, 44, '2025-08-08 06:52:26');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (29, 68, 43, 229, 53, 17, '2025-02-26 20:56:26');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (30, 61, 60, 191, 18, 114, '2025-03-05 15:23:27');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (31, 156, 198, 19, 70, 30, '2025-04-22 20:26:31');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (32, 92, 58, 71, 49, 51, '2025-03-04 01:12:14');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (33, 174, 54, 186, 22, 38, '2025-12-01 06:22:21');
+(traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (34, 125, 70, 193, 23, 111, '2025-05-26 10:06:50');
+)
