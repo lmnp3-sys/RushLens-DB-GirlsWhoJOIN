@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS User(
 );
 
 -- INSERT STATEMENTS HERE
-INSERT INTO Location (location_id, name, address, building, floor, location_type) VALUES (
+INSERT INTO User (user_id,accountType) VALUES (
  
 )
 
