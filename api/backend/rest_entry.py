@@ -4,12 +4,28 @@ import os
 import logging
 from logging.handlers import RotatingFileHandler
 
-from backend.db_connection import db
-from backend.simple.simple_routes import simple_routes
-from backend.ngos.ngo_routes import ngos
+from db_connection import db
+# from simple.simple_routes import simple_routes
+from rushlens.location_store_routes import location_store
 
 def create_app():
     app = Flask(__name__)
+
+    # print("=" * 50)
+    # print("DATABASE CONNECTION INFO:")
+    # print(f"DB_HOST: {os.getenv('DB_HOST')}")
+    # print(f"DB_PORT: {os.getenv('DB_PORT')}")
+    # print(f"DB_USER: {os.getenv('DB_USER')}")
+    # print(f"DB_NAME: {os.getenv('DB_NAME')}")
+    # print(f"DB_PASSWORD exists: {os.getenv('DB_PASSWORD') is not None}")
+    # print("=" * 50)
+
+    app.config['MYSQL_DATABASE_HOST'] = os.getenv('DB_HOST')
+    app.config['MYSQL_DATABASE_PORT'] = int(os.getenv('DB_PORT'))
+    app.config['MYSQL_DATABASE_USER'] = os.getenv('DB_USER')
+    app.config['MYSQL_DATABASE_PASSWORD'] = os.getenv('DB_PASSWORD')
+    app.config['MYSQL_DATABASE_DB'] = os.getenv('DB_NAME')
+    
 
     app.logger.setLevel(logging.DEBUG)
     app.logger.info('API startup')
@@ -48,11 +64,16 @@ def create_app():
     # Register the routes from each Blueprint with the app object
     # and give a url prefix to each
     app.logger.info("create_app(): registering blueprints with Flask app object.")
-    app.register_blueprint(simple_routes)
-    app.register_blueprint(ngos, url_prefix="/ngo")
+    # app.register_blueprint(simple_routes)
+    app.register_blueprint(location_store, url_prefix='/rushlens')
 
     # Don't forget to return the app object
     return app
+
+    
+
+
+
 
 def setup_logging(app):
     """
@@ -88,4 +109,6 @@ def setup_logging(app):
     # app.logger.addHandler(console_handler)
     pass
     
-    
+if __name__ == "__main__":
+    app = create_app()
+    app.run(debug=True, host='0.0.0.0', port=8001)

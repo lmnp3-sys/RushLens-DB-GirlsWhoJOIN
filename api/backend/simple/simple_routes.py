@@ -8,9 +8,9 @@ from flask import (
     url_for,
 )
 import json
-from backend.db_connection import db
-from backend.simple.playlist import sample_playlist_data
-from backend.ml_models import model01
+from db_connection import db
+from simple.playlist import sample_playlist_data
+from ml_models import model01
 
 # This blueprint handles some basic routes that you can use for testing
 simple_routes = Blueprint("simple_routes", __name__)
