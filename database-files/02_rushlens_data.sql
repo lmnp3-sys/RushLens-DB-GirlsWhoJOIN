@@ -1,38 +1,126 @@
 -- Location
-INSERT INTO Location (location_id, name, address, building, floor, location_type) 
+INSERT INTO Location (location_id, name, address, building, floor, location_type)
 VALUES
-(1, 'Popeyes', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food')
-(2, 'Starbucks', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Cafe')
-(3, 'D''Angelo', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food')
-(4, 'Sal''Pizza', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food')
-(5, 'Halal Shack', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food')
-(6, 'Dunkin''', '360 Huntington Ave, Boston, MA 02115', 'Hayden Hall', 1, 'Cafe')
-(7, 'Dunkin''', '115 Forsyth St, Boston, MA 02115', 'Shillman Hall', 1, 'Cafe')
-(8, 'Saxbys Northeastern', '815 Columbus Ave, Boston, MA 02115', 'EXP', 2, 'Cafe')
-(9, 'Subway', 'Leon St, Boston, MA 02115', 'Ryder Hall', 1, 'Fast-Food')
-(10, 'Kigo Kitchen', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food')
-(11, 'Equator Coffees', '360 Huntington Ave, Boston, MA 02115', 'Snell Library', 1, 'Cafe')
-(12, 'Juicygreens', '1155 Tremont St, Boston, MA 02115', 'International Village', 1, 'Drinks')
-(13, 'Fuel America', '815 Columbus Ave, Boston, MA 02115', 'ISEC', 1, 'Cafe')
-(14, '', '95456 Mallory Street', 'PO Box 43900', 'PO Box 41674', '')
-(15, '', '5868 Russell Plaza', '14th Floor', 'Suite 48', '')
-(16, '', '1758 Mitchell Place', 'Suite 92', 'Suite 6', '')
-(17, '', '93 Walton Avenue', 'Suite 94', 'PO Box 84021', '')
-(18, '', '7390 Fairview Street', '9th Floor', 'Room 179', '')
-(19, '', '086 John Wall Park', '17th Floor', '10th Floor', '')
-(20, '', '42608 Eggendart Road', 'Room 994', 'Apt 1028', '')
-(21, '', '75 Beilfuss Crossing', 'PO Box 35334', 'Apt 176', '')
-(22, '', '5586 Mcbride Pass', 'Room 1284', '20th Floor', '')
-(23, '', '734 Utah Center', 'Apt 204', 'Suite 60', '')
-(24, '', '653 Alpine Lane', 'Apt 1391', '2nd Floor', '')
-(25, '', '802 Merrick Hill', 'Room 643', 'Apt 1476', '')
-(26, '', '37045 Cody Court', 'Apt 1363', 'Room 825', '')
-(27, '', '1 Ridgeway Alley', 'PO Box 57451', '2nd Floor', '')
-(28, '', '626 Steensland Place', 'Suite 29', 'Room 1558', '')
-(29, '', '6 Welch Pass', '13th Floor', '15th Floor', '')
-(30, '', '060 Fallview Avenue', '5th Floor', 'Suite 45', '')
+(1, 'Curry Student Center', '360 Huntington Ave', 'Curry', '1st Floor', 'dining'),
+(2, 'Curry Student Center', '360 Huntington Ave', 'Curry', '2nd Floor', 'study'),
+(3, 'Curry Student Center', '360 Huntington Ave', 'Curry', 'Basement', 'service'),
+(4, 'Snell Library', '376 Huntington Ave', 'Snell', '1st Floor', 'study'),
+(5, 'Snell Library', '376 Huntington Ave', 'Snell', '2nd Floor', 'quiet_study'),
+(6, 'Snell Library', '376 Huntington Ave', 'Snell', '3rd Floor', 'quiet_study'),
+(7, 'ISEC', '805 Columbus Ave', 'ISEC', 'Ground Level', 'study'),
+(8, 'ISEC', '805 Columbus Ave', 'ISEC', '2nd Floor', 'classroom'),
+(9, 'Marino Recreation Center', '369 Huntington Ave', 'Marino', '1st Floor', 'fitness'),
+(10,'Marino Recreationa Center', '369 Huntington Ave', 'Marino', '2nd Floor', 'fitness'),
+(11,'Ryder Hall', '360 Huntington Ave', 'Ryder Hall', '1st Floor', 'dining'),
+(12,'Ryder Hall', '360 Huntington Ave', 'Ryder Hall', '2nd Floor', 'classroom'),
+(13,'Richards Hall', '360 Huntington Ave', 'Richards', 'Basement', 'classroom'),
+(14,'Richards Hall', '360 Huntington Ave', 'Richards', '1st Floor', 'classroom'),
+(15,'Richards Hall', '360 Huntington Ave', 'Richards', '2nd Floor', 'classroom'),
+(16,'Shillman Hall', '115 Forsyth St', 'Shillman', '1st Floor', 'classroom'),
+(17,'Shillman Hall', '115 Forsyth St', 'Shillman', '2nd Floor', 'classroom'),
+(18,'EXP Research Center', '815 Columbus Ave', 'EXP', '1st Floor', 'innovation'),
+(19,'EXP Research Center', '815 Columbus Ave', 'EXP', '2nd Floor', 'lab'),
+(20,'EXP Research Center', '815 Columbus Ave', 'EXP', '3rd Floor', 'classroom'),
+(21,'Columbus Parking Garage', '795 Columbus Ave', 'Columbus Garage', 'Ground Level', 'service'),
+(22,'East Village', '291 St. Botolph St', 'East Village', 'Lobby', 'service'),
+(23,'East Village', '291 St. Botolph St', 'East Village', '17th Floor', 'study'),
+(24,'Dodge Hall', '360 Huntington Ave', 'Dodge Hall', 'Ground Level', 'classroom'),
+(25,'Dodge Hall', '360 Huntington Ave', 'Dodge Hall', '2nd Floor', 'classroom'),
+(26,'Forsyth Building', '70 Forsyth St', 'Forsyth Building', '1st Floor', 'classroom'),
+(27,'Forsyth Building', '70 Forsyth St', 'Forsyth Building', '2nd Floor', 'classroom'),
+(28,'Kariotis Hall', '360 Huntington Ave', 'Kariotis Hall', '1st Floor', 'lab'),
+(29,'Kariotis Hall', '360 Huntington Ave', 'Kariotis Hall', '2nd Floor', 'lab'),
+(30,'Snell Engineering', '110 Forsyth St', 'Snell Engineering', '1st Floor', 'lab'),
+(31,'Snell Engineering', '110 Forsyth St', 'Snell Engineering', '2nd Floor', 'classroom'),
+(32,'Robinson Hall', '360 Huntington Ave', 'Robinson', '1st Floor', 'classroom'),
+(33,'Robinson Hall', '360 Huntington Ave', 'Robinson', '2nd Floor', 'classroom'),
+(34,'Matthews Arena', '238 St. Botolph St', 'Matthews', 'Concourse', 'service'),
+(35,'Matthews Arena', '238 St. Botolph St', 'Matthews', 'Basement', 'service'),
+(36,'LightView Apartments', '744 Columbus Ave', 'LightView', 'Lobby', 'service'),
+(37,'West Village F', '40A Leon St', 'WVF', 'Lobby', 'study'),
+(38,'West Village G', '450 Parker St', 'WVG', '1st Floor', 'study'),
+(39,'West Village H', '440 Huntington Ave', 'WVH', 'Lobby', 'study'),
+(40,'Rubenstein Hall', '407 Huntington Ave', 'Rubenstein', '1st Floor', 'classroom');
 
+INSERT INTO Store (store_id, location_id, store_name, store_type, status, capacity)
+VALUES
+(1, 1, 'Curry Starbucks', 'cafe', 'open', 40),
+(2, 1, 'Curry Taco Bell', 'dining', 'busy', 50),
+(3, 2, 'Curry Upstairs Study Pods', 'study', 'open', 80),
+(4, 4, 'Snell First Floor Pods', 'study', 'open', 120),
+(5, 5, 'Snell Quiet Study 2nd Floor', 'quiet_study', 'open', 75),
+(6, 6, 'Snell Silent Room', 'quiet_study', 'closed', 60),
+(7, 7, 'ISEC Cafe', 'dining', 'open', 45),
+(8, 8, 'ISEC Classroom Lounge', 'study', 'open', 25),
+(9, 9, 'Marino Cardio Floor', 'fitness', 'busy', 200),
+(10, 10, 'Marino Weight Room', 'fitness', 'open', 150),
+(11, 12, 'Ryder Hall Eatery', 'dining', 'open', 40),
+(12, 14, 'Richards Lecture Hall', 'classroom', 'open', 60),
+(13, 15, 'Richards Computer Lab', 'lab', 'open', 55),
+(14, 16, 'Shillman Lounge', 'study', 'open', 30),
+(15, 17, 'Shillman Hall Classroom Cluster', 'classroom', 'open', 40),
+(16, 18, 'EXP Robotics Lab Lobby', 'innovation', 'open', 50),
+(17, 19, 'EXP 2nd Floor Study Lounge', 'study', 'open', 35),
+(18, 20, 'EXP Classroom Wing', 'classroom', 'open', 80),
+(19, 21, 'Columbus Bike Parking', 'service', 'open', 20),
+(20, 22, 'East Village Lobby Study', 'study', 'open', 25),
+(21, 23, 'East Village Sky Lounge', 'study', 'open', 45),
+(22, 24, 'Dodge Hall Atrium', 'study', 'open', 40),
+(23, 25, 'Dodge 2nd Floor Lounge', 'study', 'open', 30),
+(24, 26, 'Forsyth 1st Floor Classroom Cluster', 'classroom', 'open', 50),
+(25, 27, 'Forsyth 2nd Floor Study Spots', 'study', 'open', 35),
+(26, 28, 'Kariotis Hardware Lab', 'lab', 'open', 55),
+(27, 29, 'Kariotis Design Studio', 'innovation', 'open', 40),
+(28, 30, 'Snell Engineering Lobby', 'study', 'open', 60),
+(29, 31, 'Snell Engineering Lab Wing', 'lab', 'open', 70),
+(30, 32, 'Robinson Hall Study Corner', 'study', 'open', 20),
+(31, 33, 'Robinson Lecture Stairs', 'service', 'open', 15),
+(32, 34, 'Matthews Arena Concourse', 'service', 'busy', 250),
+(33, 35, 'Matthews Basement Gym', 'fitness', 'open', 30),
+(34, 36, 'LightView Lobby Study', 'study', 'open', 25),
+(35, 37, 'WVF Lobby Center', 'study', 'open', 35),
+(36, 38, 'WVG 1st Floor Study Space', 'study', 'open', 45),
+(37, 39, 'WVH Lobby Pods', 'study', 'open', 30),
+(38, 40, 'Rubenstein Study Room', 'study', 'open', 40),
+(39, 3, 'Curry Basement Commuter Lounge', 'study', 'open', 60);
 
+INSERT INTO Customers (customer_id, FName, LName, store_id, neuID)
+VALUES
+(1, 'Minnie', 'LePham', 1, '00124567'),
+(2, 'Mai', 'Nguyen', 2, '00239485'),
+(3, 'Vai', 'Unnithan', 3, '00938475'),
+(4, 'Shreya', 'Selvaraju', 4, '00399284'),
+(5, 'Mia', 'Sullivan', 5, '00748293'),
+(6, 'Ethan', 'Nguyen', 6, '00298471'),
+(7, 'Isabella', 'Martinez', 7, '00457293'),
+(8, 'Aiden', 'Kim', 8, '00849273'),
+(9, 'Zoe', 'Johnson', 9, '00923451'),
+(10, 'Lucas', 'White', 10, '00748912'),
+(11, 'Ella', 'Kapoor', 11, '00238495'),
+(12, 'Benjamin', 'Lopez', 12, '00499822'),
+(13, 'Charlotte', 'Singh', 13, '00857392'),
+(14, 'Henry', 'Brown', 14, '00628475'),
+(15, 'Amelia', 'Ahmed', 15, '00592847'),
+(16, 'James', 'Clark', 16, '00384729'),
+(17, 'Harper', 'Miller', 17, '00192847'),
+(18, 'Alexander', 'Rivera', 18, '00918374'),
+(19, 'Evelyn', 'Garcia', 19, '00294837'),
+(20, 'Jack', 'Hernandez', 20, '00958273'),
+(21, 'Grace', 'Kim', 21, '00738294'),
+(22, 'William', 'Allen', 22, '00394827'),
+(23, 'Chloe', 'Parker', 23, '00649283'),
+(24, 'Michael', 'Thompson', 24, '00847392'),
+(25, 'Abigail', 'Evans', 25, '00938274'),
+(26, 'Elijah', 'Scott', 26, '00298374'),
+(27, 'Emily', 'Taylor', 27, '00194827'),
+(28, 'Daniel', 'Moore', 28, '00482937'),
+(29, 'Aria', 'Bennett', 29, '00582739'),
+(30, 'Matthew', 'Wong', 30, '00849283'),
+(31, 'Scarlett', 'Diaz', 31, '00648392'),
+(32, 'Joseph', 'King', 32, '00718293'),
+(33, 'Victoria', 'Romero', 33, '00948273'),
+(34, 'David', 'Gray', 34, '00192384'),
+(35, 'Nora', 'Jimenez', 35, '00628394');
 
 
 -- StoreDailyStats
