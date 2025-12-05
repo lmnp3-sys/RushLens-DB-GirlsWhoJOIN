@@ -121,3 +121,4 @@ def delete_store(store_id):
     db.get_db().commit()
 
     return jsonify({'message': 'Store deleted'})
+
