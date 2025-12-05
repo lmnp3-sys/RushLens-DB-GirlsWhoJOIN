@@ -154,6 +154,36 @@ CREATE TABLE IF NOT EXISTS User(
     accountType VARCHAR(50)
 );
 
+-- bridge table entries, ER Diagram Referenced
+CREATE TABLE CustomerInput (
+    input_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    input_notes VARCHAR(255),
+    PRIMARY KEY (input_id, customer_id),
+    FOREIGN KEY (input_id) REFERENCES UserInput(input_id),
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+);
+
+CREATE TABLE StoreInput (
+    store_id INT NOT NULL,
+    input_id INT NOT NULL,
+    store_notes VARCHAR(255),
+    PRIMARY KEY (store_id, input_id),
+    FOREIGN KEY (store_id) REFERENCES Store(store_id),
+    FOREIGN KEY (input_id) REFERENCES UserInput(input_id)
+);
+
+CREATE TABLE DataDerived (
+    traffic_id INT NOT NULL,
+    data_id INT NOT NULL,
+    sensor_id INT NOT NULL,
+    tracking_detail VARCHAR(255),
+    PRIMARY KEY (traffic_id, data_id, sensor_id),
+    FOREIGN KEY (traffic_id) REFERENCES FootTrafficRecord(traffic_id),
+    FOREIGN KEY (data_id) REFERENCES SensorData(data_id),
+    FOREIGN KEY (sensor_id) REFERENCES SensorDevice(sensor_id)
+);
+
 -- INSERT STATEMENTS HERE
 INSERT INTO User (user_id,accountType) VALUES(
 (1, 'owner');
