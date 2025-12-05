@@ -165,7 +165,39 @@ CREATE TABLE IF NOT EXISTS User(
 
 -- INSERT STATEMENTS HERE
 INSERT INTO User (user_id,accountType) VALUES (
- 
+(User_id, accountType) values (1, 'owner');
+(User_id, accountType) values (2, 'manager');
+(User_id, accountType) values (3, 'manager');
+(User_id, accountType) values (4, 'owner');
+(User_id, accountType) values (5, 'community member');
+(User_id, accountType) values (6, 'community member');
+(User_id, accountType) values (7, 'owner');
+(User_id, accountType) values (8, 'manager');
+(User_id, accountType) values (9, 'community member');
+(User_id, accountType) values (10, 'owner');
+(User_id, accountType) values (11, 'manager');
+(User_id, accountType) values (12, 'manager');
+(User_id, accountType) values (13, 'manager');
+(User_id, accountType) values (14, 'owner');
+(User_id, accountType) values (15, 'community member');
+(User_id, accountType) values (16, 'community member');
+(User_id, accountType) values (17, 'community member');
+(User_id, accountType) values (18, 'faculty');
+(User_id, accountType) values (19, 'owner');
+(User_id, accountType) values (20, 'faculty');
+(User_id, accountType) values (21, 'community member');
+(User_id, accountType) values (22, 'community member');
+(User_id, accountType) values (23, 'community member');
+(User_id, accountType) values (24, 'student');
+(User_id, accountType) values (25, 'owner');
+(User_id, accountType) values (26, 'manager');
+(User_id, accountType) values (27, 'manager');
+(User_id, accountType) values (28, 'owner');
+(User_id, accountType) values (29, 'student');
+(User_id, accountType) values (30, 'manager');
+(User_id, accountType) values (31, 'owner');(User_id, accountType) values (32, 'owner');
+(User_id, accountType) values (33, 'owner');
+(User_id, accountType) values (34, 'community member');
 )
 
 
