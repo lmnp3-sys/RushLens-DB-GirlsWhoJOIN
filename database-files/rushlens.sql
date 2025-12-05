@@ -235,3 +235,39 @@ INSERT INTO FootTrafficRecord (traffic_id, data_id, user_id, store_id, avg_wait_
 (traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (33, 174, 54, 186, 22, 38, '2025-12-01 06:22:21');
 (traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) values (34, 125, 70, 193, 23, 111, '2025-05-26 10:06:50');
 )
+
+INSERT INTO UserInput (input_id, user_id, customer_id, store_id, timeStamp, reported_wait_min, reported_occupancy, intended_stay_min, notes) VALUES
+(1, 32, 164, 70, '2025-08-08 21:26:18', 71, 17, 105, 'Friendly staff and quick service');
+(2, 167, 123, 255, '2025-04-02 02:32:46', 8, 134, 126, 'Great food and atmosphere');
+(3, 157, 90, 18, '2025-09-25 10:18:03', 25, 139, 61, 'Cozy ambiance with delicious menu options');
+(4, 174, 13, 184, '2025-02-21 21:48:11', 58, 28, 50, 'Great food and atmosphere');
+(5, 12, 3, 132, '2025-09-28 09:45:25', 37, 131, 178, 'Friendly staff and quick service');
+(6, 144, 155, 90, '2025-01-16 02:49:27', 39, 45, 35, 'Friendly staff and quick service');
+(7, 195, 122, 227, '2025-06-04 11:09:10', 43, 77, 104, 'Great food and atmosphere');
+(8, 238, 216, 103, '2025-08-30 13:21:12', 56, 89, 130, 'Friendly staff and quick service');
+(9, 63, 27, 238, '2025-07-24 02:53:45', 75, 99, 155, 'Friendly staff and quick service');
+(10, 37, 79, 57, '2025-02-23 13:41:20', 23, 12, 200, 'Cozy ambiance with delicious menu options');
+(11, 160, 87, 95, '2025-05-06 13:03:25', 8, 46, 210, 'Cozy ambiance with delicious menu options');
+(12, 136, 155, 167, '2025-02-06 08:16:31', 44, 94, 125, 'Cozy ambiance with delicious menu options');
+(13, 240, 163, 208, '2025-10-27 16:30:38', 53, 4, 108, 'Great food and atmosphere');
+(14, 46, 143, 246, '2025-01-05 08:46:55', 56, 140, 152, 'Cozy ambiance with delicious menu options');
+(15, 146, 95, 233, '2025-01-14 13:54:14', 5, 49, 203, 'Great food and atmosphere');
+(16, 186, 51, 265, '2025-03-02 14:36:21', 41, 107, 118, 'Friendly staff and quick service');
+(17, 122, 221, 152, '2025-11-07 09:51:41', 61, 90, 184, 'Friendly staff and quick service');
+(18, 63, 181, 59, '2025-11-28 01:34:26', 43, 90, 217, 'Great food and atmosphere');
+(19, 207, 225, 128, '2025-10-15 23:31:49', 63, 131, 41, 'Cozy ambiance with delicious menu options');
+(20, 216, 178, 105, '2025-06-23 21:39:36', 43, 120, 226, 'Friendly staff and quick service');
+(21, 170, 81, 57, '2025-09-02 11:37:00', 73, 107, 144, 'Cozy ambiance with delicious menu options');
+(22, 212, 144, 294, '2024-12-12 21:07:40', 26, 11, 119, 'Friendly staff and quick service');
+(23, 143, 38, 119, '2025-04-11 23:51:11', 65, 137, 21, 'Cozy ambiance with delicious menu options');
+(24, 220, 55, 96, '2025-08-04 21:22:37', 71, 137, 167, 'Cozy ambiance with delicious menu options');
+(25, 180, 180, 225, '2025-07-06 09:46:29', 34, 77, 45, 'Friendly staff and quick service');
+(26, 160, 31, 197, '2025-05-28 18:28:37', 24, 121, 101, 'Cozy ambiance with delicious menu options');
+(27, 215, 119, 184, '2025-05-11 20:26:40', 70, 79, 224, 'Cozy ambiance with delicious menu options');
+(28, 129, 176, 198, '2025-10-10 12:59:04', 4, 85, 154, 'Cozy ambiance with delicious menu options');
+(29, 40, 172, 113, '2024-12-14 23:24:40', 14, 150, 175, 'Great food and atmosphere');
+(30, 121, 95, 199, '2025-02-04 15:52:43', 7, 73, 209, 'Friendly staff and quick service');
+(31, 182, 216, 247, '2025-05-10 22:51:59', 50, 7, 233, 'Friendly staff and quick service');
+(32, 93, 60, 224, '2025-11-19 13:24:11', 49, 93, 95, 'Friendly staff and quick service');
+(33, 164, 66, 71, '2025-04-02 01:48:24', 42, 101, 209, 'Friendly staff and quick service');
+(34, 187, 257, 145, '2025-09-15 13:35:51', 73, 105, 188, 'Great food and atmosphere');
