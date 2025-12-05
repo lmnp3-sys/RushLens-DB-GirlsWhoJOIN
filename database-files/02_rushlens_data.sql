@@ -1,36 +1,36 @@
 -- Location
 INSERT INTO Location (location_id, name, address, building, floor, location_type) 
 VALUES
-(1, 'Popeyes', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food');
-(2, 'Starbucks', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Cafe');
-(3, 'D''Angelo', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food');
-(4, 'Sal''Pizza', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food');
-(5, 'Halal Shack', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food');
-(6, 'Dunkin''', '360 Huntington Ave, Boston, MA 02115', 'Hayden Hall', 1, 'Cafe');
-(7, 'Dunkin''', '115 Forsyth St, Boston, MA 02115', 'Shillman Hall', 1, 'Cafe');
-(8, 'Saxbys Northeastern', '815 Columbus Ave, Boston, MA 02115', 'EXP', 2, 'Cafe');
-(9, 'Subway', 'Leon St, Boston, MA 02115', 'Ryder Hall', 1, 'Fast-Food');
-(10, 'Kigo Kitchen', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food');
-(11, 'Equator Coffees', '360 Huntington Ave, Boston, MA 02115', 'Snell Library', 1, 'Cafe');
-(12, 'Juicygreens', '1155 Tremont St, Boston, MA 02115', 'International Village', 1, 'Drinks');
-(13, 'Fuel America', '815 Columbus Ave, Boston, MA 02115', 'ISEC', 1, 'Cafe');
-(14, '', '95456 Mallory Street', 'PO Box 43900', 'PO Box 41674', '');
-(15, '', '5868 Russell Plaza', '14th Floor', 'Suite 48', '');
-(16, '', '1758 Mitchell Place', 'Suite 92', 'Suite 6', '');
-(17, '', '93 Walton Avenue', 'Suite 94', 'PO Box 84021', '');
-(18, '', '7390 Fairview Street', '9th Floor', 'Room 179', '');
-(19, '', '086 John Wall Park', '17th Floor', '10th Floor', '');
-(20, '', '42608 Eggendart Road', 'Room 994', 'Apt 1028', '');
-(21, '', '75 Beilfuss Crossing', 'PO Box 35334', 'Apt 176', '');
-(22, '', '5586 Mcbride Pass', 'Room 1284', '20th Floor', '');
-(23, '', '734 Utah Center', 'Apt 204', 'Suite 60', '');
-(24, '', '653 Alpine Lane', 'Apt 1391', '2nd Floor', '');
-(25, '', '802 Merrick Hill', 'Room 643', 'Apt 1476', '');
-(26, '', '37045 Cody Court', 'Apt 1363', 'Room 825', '');
-(27, '', '1 Ridgeway Alley', 'PO Box 57451', '2nd Floor', '');
-(28, '', '626 Steensland Place', 'Suite 29', 'Room 1558', '');
-(29, '', '6 Welch Pass', '13th Floor', '15th Floor', '');
-(30, '', '060 Fallview Avenue', '5th Floor', 'Suite 45', '');
+(1, 'Popeyes', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food')
+(2, 'Starbucks', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Cafe')
+(3, 'D''Angelo', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food')
+(4, 'Sal''Pizza', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food')
+(5, 'Halal Shack', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food')
+(6, 'Dunkin''', '360 Huntington Ave, Boston, MA 02115', 'Hayden Hall', 1, 'Cafe')
+(7, 'Dunkin''', '115 Forsyth St, Boston, MA 02115', 'Shillman Hall', 1, 'Cafe')
+(8, 'Saxbys Northeastern', '815 Columbus Ave, Boston, MA 02115', 'EXP', 2, 'Cafe')
+(9, 'Subway', 'Leon St, Boston, MA 02115', 'Ryder Hall', 1, 'Fast-Food')
+(10, 'Kigo Kitchen', '360 Huntington Ave, Boston, MA 02115', 'Curry Student Center', 1, 'Fast-Food')
+(11, 'Equator Coffees', '360 Huntington Ave, Boston, MA 02115', 'Snell Library', 1, 'Cafe')
+(12, 'Juicygreens', '1155 Tremont St, Boston, MA 02115', 'International Village', 1, 'Drinks')
+(13, 'Fuel America', '815 Columbus Ave, Boston, MA 02115', 'ISEC', 1, 'Cafe')
+(14, '', '95456 Mallory Street', 'PO Box 43900', 'PO Box 41674', '')
+(15, '', '5868 Russell Plaza', '14th Floor', 'Suite 48', '')
+(16, '', '1758 Mitchell Place', 'Suite 92', 'Suite 6', '')
+(17, '', '93 Walton Avenue', 'Suite 94', 'PO Box 84021', '')
+(18, '', '7390 Fairview Street', '9th Floor', 'Room 179', '')
+(19, '', '086 John Wall Park', '17th Floor', '10th Floor', '')
+(20, '', '42608 Eggendart Road', 'Room 994', 'Apt 1028', '')
+(21, '', '75 Beilfuss Crossing', 'PO Box 35334', 'Apt 176', '')
+(22, '', '5586 Mcbride Pass', 'Room 1284', '20th Floor', '')
+(23, '', '734 Utah Center', 'Apt 204', 'Suite 60', '')
+(24, '', '653 Alpine Lane', 'Apt 1391', '2nd Floor', '')
+(25, '', '802 Merrick Hill', 'Room 643', 'Apt 1476', '')
+(26, '', '37045 Cody Court', 'Apt 1363', 'Room 825', '')
+(27, '', '1 Ridgeway Alley', 'PO Box 57451', '2nd Floor', '')
+(28, '', '626 Steensland Place', 'Suite 29', 'Room 1558', '')
+(29, '', '6 Welch Pass', '13th Floor', '15th Floor', '')
+(30, '', '060 Fallview Avenue', '5th Floor', 'Suite 45', '')
 
 
 
@@ -67,7 +67,7 @@ VALUES
 (27, 20, 17, '2025-11-26', 178, 11, 7, 238),
 (28, 32, 28, '2025-11-08', 385, 12, 6, 877),
 (29, 57, 16, '2025-11-14', 423, 13, 6, 797),
-(30, 10, 19, '2025-11-11', 497, 13, 7, 972);
+(30, 10, 19, '2025-11-11', 497, 13, 7, 972)
 
 
 -- MaintenanceLog
@@ -102,7 +102,7 @@ VALUES
 (27, 31, 'Emily', 'Emergency Fix', '2025-11-13', 'Emergency power issue resolved'),
 (28, 35, 'Lisa', 'Emergency Fix', '2025-11-27', 'Restored offline sensor to operation'),
 (29, 5, 'Michael', 'Diagnostic Test', '2025-11-27', 'Hardware and software diagnostics successful'),
-(30, 19, 'Sarah', 'Battery Replacement', '2025-11-14', 'Proactive battery swap completed');
+(30, 19, 'Sarah', 'Battery Replacement', '2025-11-14', 'Proactive battery swap completed')
 
 
 --DataQualityCheck
@@ -137,7 +137,7 @@ VALUES
 (27, 26, '2025-11-08 16:32:31', 1),
 (28, 7, '2025-11-22 07:14:51', 1),
 (29, 6, '2025-11-27 23:23:30', 1),
-(30, 33, '2025-11-14 05:36:35', 1);
+(30, 33, '2025-11-14 05:36:35', 1)
 
 --Sensor-Device 
 INSERT INTO SensorDevice (sensor_id, store_id, sensorType, status, lastCalibrationDate, firmwareVersion,installDate)
@@ -173,7 +173,7 @@ VALUES
 (29,20,'heat', false,'2025-07-30 20:19:46', 90,'2022-07-03 05:55:55')
 (30,2,'motion', false,'2025-08-07 21:55:37', 48,'2023-01-10 01:59:22')
 
---System Alerts
+--System Alerts (weak entity)
 INSERT INTO SystemAlerts (alert_id, sensor_id, alertType, severity, timeStamp, resolved)
 VALUES
 (1, 30, 'info', 'high', '2025-04-21 14:19:04', false),
@@ -205,7 +205,7 @@ VALUES
 (27, 26, 'info', 'critical', '2025-01-26 20:05:46', true),
 (28, 7, 'notification', 'minimal', '2024-12-08 04:40:04', false),
 (29, 7, 'info', 'important', '2025-10-10 11:01:34', false),
-(30, 12, 'critical', 'negligible', '2025-03-07 06:07:31', true);
+(30, 12, 'critical', 'negligible', '2025-03-07 06:07:31', true)
 
 --Sensor data
 INSERT INTO SensorData(data_id, sensor_id, value, timeStamp)
@@ -239,4 +239,24 @@ VALUES
 (27, 29, '8123966679', '2023-11-23 16:49:03'),
 (28, 8, '6597400321', '2024-12-08 23:47:32'),
 (29, 10, '4733304870', '2025-06-27 06:11:31'),
-(30, 52, '0375833862', '2023-08-31 00:16:28');
+(30, 52, '0375833862', '2023-08-31 00:16:28'),
+(31, 54, '8280442324', '2024-10-06 07:22:39'),
+(32, 39, '2146113448', '2025-08-21 02:12:23'),
+(33, 32, '2859054383', '2025-03-23 13:19:54'),
+(34, 47, '6615228602', '2025-03-10 10:16:46'),
+(35, 32, '0355562014', '2025-03-31 19:01:19'),
+(36, 47, '7642738382', '2025-01-17 05:20:06'),
+(37, 8, '1540178331', '2025-08-23 09:25:13'),
+(38, 48, '7641464777', '2025-04-06 18:14:08'),
+(39, 9, '8370516084', '2025-10-01 12:55:26'),
+(40, 31, '1200430794', '2025-11-26 20:17:34'),
+(41, 26, '7133684756', '2024-07-07 14:35:09'),
+(42, 52, '1935829777', '2024-08-08 15:20:13'),
+(43, 60, '5723534823', '2025-08-03 18:46:05'),
+(44, 26, '5768057625', '2025-05-10 01:57:18'),
+(45, 53, '7943468007', '2025-05-13 01:50:27'),
+(46, 15, '9422226244', '2025-09-07 00:14:18'),
+(47, 45, '6324929159', '2024-08-07 19:57:10'),
+(48, 51, '3313324487', '2025-11-02 23:22:19'),
+(49, 57, '9619401980', '2025-03-11 20:12:00'),
+(50, 8, '2269116704', '2025-08-17 12:03:16');
