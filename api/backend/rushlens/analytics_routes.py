@@ -139,4 +139,6 @@ def delete_sensor(sensor_id):
 
     finally:
         cursor.close()
+
+        
         
