@@ -5,27 +5,10 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 from db_connection import db
-# from simple.simple_routes import simple_routes
 from rushlens.location_store_routes import location_store
 
 def create_app():
     app = Flask(__name__)
-
-    # print("=" * 50)
-    # print("DATABASE CONNECTION INFO:")
-    # print(f"DB_HOST: {os.getenv('DB_HOST')}")
-    # print(f"DB_PORT: {os.getenv('DB_PORT')}")
-    # print(f"DB_USER: {os.getenv('DB_USER')}")
-    # print(f"DB_NAME: {os.getenv('DB_NAME')}")
-    # print(f"DB_PASSWORD exists: {os.getenv('DB_PASSWORD') is not None}")
-    # print("=" * 50)
-
-    app.config['MYSQL_DATABASE_HOST'] = os.getenv('DB_HOST')
-    app.config['MYSQL_DATABASE_PORT'] = int(os.getenv('DB_PORT'))
-    app.config['MYSQL_DATABASE_USER'] = os.getenv('DB_USER')
-    app.config['MYSQL_DATABASE_PASSWORD'] = os.getenv('DB_PASSWORD')
-    app.config['MYSQL_DATABASE_DB'] = os.getenv('DB_NAME')
-    
 
     app.logger.setLevel(logging.DEBUG)
     app.logger.info('API startup')
@@ -34,12 +17,8 @@ def create_app():
     #   Uncomment the code in the setup_logging function
     # setup_logging(app) 
 
-    # Load environment variables
-    # This function reads all the values from inside
-    # the .env file (in the parent folder) so they
-    # are available in this file.  See the MySQL setup
-    # commands below to see how they're being used.
     load_dotenv()
+
 
     # secret key that will be used for securely signing the session
     # cookie and can be used for any other security related needs by
@@ -48,14 +27,12 @@ def create_app():
     app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
     # # these are for the DB object to be able to connect to MySQL.
-    # app.config['MYSQL_DATABASE_USER'] = 'root'
+    app.config['MYSQL_DATABASE_USER'] = 'root'
     app.config["MYSQL_DATABASE_USER"] = os.getenv("DB_USER").strip()
     app.config["MYSQL_DATABASE_PASSWORD"] = os.getenv("MYSQL_ROOT_PASSWORD").strip()
     app.config["MYSQL_DATABASE_HOST"] = os.getenv("DB_HOST").strip()
     app.config["MYSQL_DATABASE_PORT"] = int(os.getenv("DB_PORT").strip())
-    app.config["MYSQL_DATABASE_DB"] = os.getenv(
-        "DB_NAME"
-    ).strip()  # Change this to your DB name
+    app.config["MYSQL_DATABASE_DB"] = os.getenv("DB_NAME").strip()  # Change this to your DB name
 
     # Initialize the database object with the settings above.
     app.logger.info("current_app(): starting the database connection")
@@ -64,7 +41,6 @@ def create_app():
     # Register the routes from each Blueprint with the app object
     # and give a url prefix to each
     app.logger.info("create_app(): registering blueprints with Flask app object.")
-    # app.register_blueprint(simple_routes)
     app.register_blueprint(location_store, url_prefix='/rushlens')
 
     # Don't forget to return the app object
@@ -111,4 +87,4 @@ def setup_logging(app):
     
 if __name__ == "__main__":
     app = create_app()
-    app.run(debug=True, host='0.0.0.0', port=8001)
+    app.run(debug=True, host='0.0.0.0', port=8339) # run Flask locally, choose port not in use yet
