@@ -1,5 +1,6 @@
-CREATE DATABASE IF NOT EXISTS RushLens;
-USE RushLens;
+-- DROP DATABASE IF EXISTS rushlens_db;
+-- CREATE DATABASE IF NOT EXISTS rushlens_db;
+USE rushlens_db;
 
 -- Disable FK checks to allow dropping in any order
 SET FOREIGN_KEY_CHECKS = 0;
@@ -101,7 +102,7 @@ CREATE TABLE IF NOT EXISTS DataQualityCheck(
     check_id INT PRIMARY KEY,
     sensor_id INT,
     checkTime DATETIME,
-    status BOOLEAN,
+    status VARCHAR(20),
     FOREIGN KEY (sensor_id) REFERENCES SensorDevice (sensor_id)
         ON DELETE RESTRICT ON UPDATE RESTRICT
 );
@@ -126,7 +127,7 @@ CREATE TABLE IF NOT EXISTS Store(
     location_id INT,
     store_name VARCHAR(50),
     store_type VARCHAR(50),
-    status BOOLEAN,
+    status VARCHAR(20),
     capacity INT,
     outlet_num INT,
     FOREIGN KEY (location_id) REFERENCES Location (location_id)
@@ -140,7 +141,7 @@ CREATE TABLE IF NOT EXISTS Location(
     name VARCHAR(50),
     address VARCHAR(50),
     building VARCHAR(50),
-    floor INT,
+    floor VARCHAR(20),
     location_type VARCHAR(50)
 );
 
@@ -150,7 +151,7 @@ CREATE TABLE IF NOT EXISTS SensorDevice(
     sensor_id INT PRIMARY KEY,
     store_id INT,
     sensorType VARCHAR(50),
-    status BOOLEAN,
+    status VARCHAR(20),
     lastCalibrationDate DATETIME,
     firmwareVersion INT,
     installDate DATETIME,
