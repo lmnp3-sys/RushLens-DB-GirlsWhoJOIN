@@ -6,6 +6,7 @@ from logging.handlers import RotatingFileHandler
 
 from db_connection import db
 from rushlens.location_store_routes import location_store
+from rushlens.analytics_routes import analytics
 
 def create_app():
     app = Flask(__name__)
@@ -42,6 +43,7 @@ def create_app():
     # and give a url prefix to each
     app.logger.info("create_app(): registering blueprints with Flask app object.")
     app.register_blueprint(location_store, url_prefix='/rushlens')
+    app.register_blueprint(analytics, url_prefix='/rushlens')
 
     # Don't forget to return the app object
     return app

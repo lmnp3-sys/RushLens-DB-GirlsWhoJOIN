@@ -5,10 +5,10 @@ from db_connection import db
 from mysql.connector import Error
 
 #Create the blueprint 
-analytics =  Blueprint('analytic', __name__)
+analytics =  Blueprint('analytics', __name__)
 
 # GET all sensors with their status, type, store,. 
-@analytics.route("/SensorDevice", methods=["GET"])
+@analytics.route("/sensor-device", methods=["GET"])
 def get_all_sensor():
     try:
         cursor = db.get_db().cursor()
