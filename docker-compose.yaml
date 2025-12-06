@@ -24,6 +24,8 @@ services:
   db:
     env_file:
       - ./api/.env
+    environment:
+      - MYSQL_DATABASE=rushlens_db
     image: mysql:9
     container_name: mysql_db
     hostname: db
