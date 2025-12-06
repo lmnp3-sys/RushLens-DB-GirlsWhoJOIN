@@ -161,7 +161,7 @@ INSERT INTO User (user_id,accountType) VALUES
 (34, 'community member');
 
 
-INSERT INTO FootTrafficRecord (visitor_count, timeStamp) 
+INSERT INTO FootTrafficRecord (traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count, timeStamp) 
 VALUES
 (1, 158, 111, 128, 36, 3, '2025-08-19 00:45:31'),
 (2, 89, 35, 288, 58, 38, '2025-04-13 17:54:11'),
