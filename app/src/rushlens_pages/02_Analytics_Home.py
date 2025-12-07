@@ -13,7 +13,7 @@ st.set_page_config(layout='wide')
 # Show appropriate sidebar links for the role of the currently logged-in user
 SideBarLinks()
 
-#Content of Timmy page
+# Content of Timmy page
 
 logger.info("Loading Analytics Scientist home page")
 
@@ -23,7 +23,7 @@ st.write('')
 st.write('')
 st.write('### What would you like to do today?')
 
-# These buttons link to Timmy's feature pages (you will create these files)
+# These buttons link to Timmy's feature pages
 if st.button('View Traffic Analytics Dashboard',
              type='primary',
              use_container_width=True):
