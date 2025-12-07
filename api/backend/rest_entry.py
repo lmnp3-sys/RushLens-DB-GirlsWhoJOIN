@@ -92,4 +92,4 @@ def setup_logging(app):
     
 if __name__ == "__main__":
     app = create_app()
-    app.run(debug=True, host='0.0.0.0', port=8339) # run Flask locally, choose port not in use yet
+    app.run(debug=True, host='0.0.0.0', port=4000) # run Flask locally, choose port not in use yet

@@ -28,9 +28,6 @@ st.session_state['authenticated'] = False
 # showSidebarNavigation = false in the [client] section
 SideBarLinks(show_home=True)
 
-# ***************************************************
-#    The major content of this page
-# ***************************************************
 
 # set the title of the page and provide a simple prompt. 
 logger.info("Loading the Home page of the app")
