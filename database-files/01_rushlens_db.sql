@@ -84,8 +84,8 @@ CREATE TABLE IF NOT EXISTS SensorData(
 );
 
 -- DROP & CREATE table: SystemAlerts
-DROP TABLE IF EXISTS SystemsAlerts;
-    CREATE TABLE IF NOT EXISTS SystemsAlerts(
+DROP TABLE IF EXISTS SystemAlerts;
+    CREATE TABLE IF NOT EXISTS SystemAlerts(
     alert_id INT PRIMARY KEY,
     sensor_id INT,
     alertType VARCHAR(20),
