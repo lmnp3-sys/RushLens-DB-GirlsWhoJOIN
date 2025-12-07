@@ -1,7 +1,7 @@
 #BLUEPRINT 4 Traffic
-from flask import Blueprint, jsonify , request
+from ml_models import Blueprint, jsonify , request
 from db_connection import db
-from mysql.connector import Error
+from db_connection import Error
 
 #Create the blueprint 
 traffic_input =  Blueprint('traffic_input', __name__)
