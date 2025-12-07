@@ -22,8 +22,12 @@ CREATE TABLE IF NOT EXISTS UserInput(
         ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
--- DROP & CRDROP TABL
-CREATE TABINT,
+-- DROP & CREATE table: FootTrafficRecord
+DROP TABLE IF EXISTS FootTrafficRecord;
+CREATE TABLE IF NOT EXISTS FootTrafficRecord(
+    traffic_id INT PRIMARY KEY,
+    data_id INT,
+    user_id INT,
     store_id INT,
     avg_wait_min INT,
     visitor_count INT,
@@ -72,8 +76,8 @@ CREATE TABLE IF NOT EXISTS SensorData(
 );
 
 -- DROP & CREATE table: SystemAlerts
-DROP TABLE IF EXISTS SystemsAlerts;
-    CREATE TABLE IF NOT EXISTS SystemsAlerts(
+DROP TABLE IF EXISTS SystemAlerts;
+CREATE TABLE IF NOT EXISTS SystemAlerts(
     alert_id INT PRIMARY KEY,
     sensor_id INT,
     alertType VARCHAR(20),
