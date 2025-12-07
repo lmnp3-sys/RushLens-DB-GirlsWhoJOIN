@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 st.set_page_config(layout="wide")
 SidebarLinks()
 
-st.title("📚 Study & Seating Availability")
+st.title("Study & Seating Availability")
 st.write("Real-time occupancy for Snell and other common study buildings.")
 
 try:

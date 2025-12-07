@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 st.set_page_config(layout="wide")
 SidebarLinks()
 
-st.title("📈 Historical Traffic & Trend Analysis")
+st.title("Historical Traffic & Trend Analysis")
 st.write("Explore past patterns to plan your day more efficiently.")
 
 # GET historical data
