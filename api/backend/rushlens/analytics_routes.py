@@ -1,7 +1,7 @@
 # BLUEPRINT 2 Analytics
 from flask import Blueprint, request, jsonify 
 from mysql.connector import Error
-from db_connection import db
+from ..db_connection import db
 from mysql.connector import Error
 
 #Create the blueprint 
