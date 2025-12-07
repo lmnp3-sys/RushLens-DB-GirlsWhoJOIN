@@ -1,4 +1,4 @@
-doxname: project-app-team-repo
+name: project-app-team-repo
 
 services:
   app:
