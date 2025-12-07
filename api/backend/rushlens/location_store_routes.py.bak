@@ -73,7 +73,7 @@ def create_location():
 # STORE ROUTES
 
 # Route 4: GET all stores
-@location_store.route('/store', methods=['GET'])
+@location_store.route('store', methods=['GET'])
 def get_all_stores():
     cursor = db.get_db().cursor()
     query = "SELECT * FROM Store"

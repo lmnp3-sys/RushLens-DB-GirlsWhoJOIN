@@ -57,7 +57,7 @@ if st.button("I am an User",
     # finally, we ask streamlit to switch to another page, in this case, the 
     # landing page for this particular user type
     logger.info("Logging in as Anne")
-    st.switch_page('pages/00_Pol_Strat_Home.py')
+    st.switch_page('pages/00_Pol_Strat_Home.py')  #change this line for your user persona
 
 if st.button('I am a Store Owner', 
             type = 'primary', 
@@ -65,7 +65,7 @@ if st.button('I am a Store Owner',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'usaid_worker'
     st.session_state['first_name'] = 'Mohammad'
-    st.switch_page('pages/10_USAID_Worker_Home.py')
+    st.switch_page('pages/10_USAID_Worker_Home.py') #change this line for your user persona
 
 if st.button('I am a Data Analyst', 
             type = 'primary', 
@@ -73,7 +73,7 @@ if st.button('I am a Data Analyst',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'SysAdmin'
-    st.switch_page('pages/20_Admin_Home.py')
+    st.switch_page('rushlens_pages/02_Analytics_Home.py') 
 
 if st.button('I am a CEO', 
             type = 'primary', 
@@ -81,5 +81,5 @@ if st.button('I am a CEO',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'SysAdmin'
-    st.switch_page('pages/20_Admin_Home.py')
+    st.switch_page('pages/20_Admin_Home.py')  #change this line for your user persona
 

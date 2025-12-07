@@ -1,5 +1,3 @@
-doxname: project-app-team-repo
-
 services:
   app:
     build: ./app
