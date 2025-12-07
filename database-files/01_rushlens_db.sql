@@ -1,5 +1,5 @@
--- DROP DATABASE IF EXISTS rushlens_db;
--- CREATE DATABASE IF NOT EXISTS rushlens_db;
+DROP DATABASE IF EXISTS rushlens_db;
+CREATE DATABASE IF NOT EXISTS rushlens_db;
 USE rushlens_db;
 
 -- Disable FK checks to allow dropping in any order
@@ -84,8 +84,8 @@ CREATE TABLE IF NOT EXISTS SensorData(
 );
 
 -- DROP & CREATE table: SystemAlerts
-DROP TABLE IF EXISTS SystemsAlerts;
-    CREATE TABLE IF NOT EXISTS SystemsAlerts(
+DROP TABLE IF EXISTS SystemAlerts;
+    CREATE TABLE IF NOT EXISTS SystemAlerts(
     alert_id INT PRIMARY KEY,
     sensor_id INT,
     alertType VARCHAR(20),
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS MaintenanceLog(
     maintenance_id INT PRIMARY KEY,
     sensor_id INT,
     performedBy VARCHAR(50),
-    actionType VARCHAR(20),
+    actionType VARCHAR(50),
     actionDate DATETIME,
     notes VARCHAR(50),
     FOREIGN KEY (sensor_id) REFERENCES SensorDevice (sensor_id)
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS SensorDevice(
     sensor_id INT PRIMARY KEY,
     store_id INT,
     sensorType VARCHAR(50),
-    status VARCHAR(20),
+    status BOOLEAN,
     lastCalibrationDate DATETIME,
     firmwareVersion INT,
     installDate DATETIME,
@@ -164,6 +164,49 @@ DROP TABLE IF EXISTS User;
 CREATE TABLE IF NOT EXISTS User(
     user_id INT PRIMARY KEY,
     accountType VARCHAR(50)
+);
+
+-- BRIGE TABLES
+-- DROP & CREATE bridge table: CustomerInput
+DROP TABLE IF EXISTS CustomerInput;
+CREATE TABLE IF NOT EXISTS CustomerInput(
+    input_id INT,
+    customer_id INT,
+    input_notes VARCHAR(100),
+    PRIMARY KEY (input_id, customer_id),
+    FOREIGN KEY (input_id) REFERENCES UserInput(input_id)
+        ON DELETE RESTRICT ON UPDATE RESTRICT,
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+        ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+-- DROP & CREATE bridge table: StoreInput
+DROP TABLE IF EXISTS StoreInput;
+CREATE TABLE IF NOT EXISTS StoreInput(
+    store_id INT,
+    input_id INT,
+    store_notes VARCHAR(100),
+    PRIMARY KEY (store_id, input_id),
+    FOREIGN KEY (store_id) REFERENCES Store(store_id)
+        ON DELETE RESTRICT ON UPDATE RESTRICT,
+    FOREIGN KEY (input_id) REFERENCES UserInput(input_id)
+        ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+-- DROP & CREATE bridge table: DataDerived
+DROP TABLE IF EXISTS DataDerived;
+CREATE TABLE IF NOT EXISTS DataDerived(
+    traffic_id INT, 
+    data_id INT, 
+    sensor_id INT, 
+    tracking_detail VARCHAR(100),
+    PRIMARY KEY (traffic_id, data_id),
+    FOREIGN KEY (traffic_id) REFERENCES FootTrafficRecord(traffic_id)
+        ON DELETE RESTRICT ON UPDATE RESTRICT,
+    FOREIGN KEY (data_id) REFERENCES SensorData(data_id)
+        ON DELETE RESTRICT ON UPDATE RESTRICT,
+    FOREIGN KEY (sensor_id) REFERENCES SensorDevice(sensor_id)
+        ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 -- Re-enable FK checks
