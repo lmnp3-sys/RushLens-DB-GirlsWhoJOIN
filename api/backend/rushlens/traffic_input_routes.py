@@ -79,7 +79,6 @@ def create_traffic_input():
     except Error as e:
         return jsonify({"error": str(e)}), 500
     
-
 # Route 4: DELETE invalid or unecessary FootTrafficData
 @traffic_input.route('/traffic/<int:traffic_id>', methods=['DELETE'])
 def delete_traffic_record(traffic_id):
@@ -97,4 +96,36 @@ def delete_traffic_record(traffic_id):
         cursor.close()
 
         
-        
+# Route 5: UPDATE Store Page
+@traffic_input.route("/traffic/update", methods=["PUT"])
+def update_store(store_id):
+    try:
+        data = request.get_json()
+
+        allowed = ["[traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count]"]
+
+        updates = []
+        params = []
+
+        for field in allowed:
+            if field in data:
+                updates.append(f"{field} = %s")
+                params.append(data[field])
+
+        if not updates:
+            return jsonify({"Cannot Update"}), 400
+
+        params.append(store_id)
+
+        query = f"UPDATE Store {', '.join(updates)} WHERE store_id = %s"
+
+        cursor = db.get_db().cursor()
+        cursor.execute(query, params)
+        db.get_db().commit()
+
+        return jsonify({"message": 'Store updated'}), 200
+
+    except Error as e:
+        return jsonify({"error": str(e)}), 500
+    finally:
+        cursor.close()
