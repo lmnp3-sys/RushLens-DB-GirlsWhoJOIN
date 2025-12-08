@@ -39,4 +39,3 @@ try:
         
 except requests.exceptions.ConnectionError:
     st.error("Community data cannot be found.")
-    st.code(f"Expected API at: {API_BASE}")
