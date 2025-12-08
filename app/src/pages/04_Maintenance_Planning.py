@@ -7,11 +7,7 @@ import pandas as pd
 
 st.title('Maintenance Planning')
 
-<<<<<<< HEAD
-API_BASE = 'http://host.docker.internal:4000/rushlen'
-=======
 API_BASE = 'http://host.docker.internal:4000/rushlens'
->>>>>>> d751c0ba7a218a3acf3c932531b3311e944f057f
 
 # VIEW maintenance history
 
