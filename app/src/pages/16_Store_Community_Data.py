@@ -14,10 +14,16 @@ data = [
     {"hour": 11, "avg_visitors": 25, "total_customers": 25, "avg_wait_min": 10, "store_name": "Store D"},
 ]
 
+df = pd.DataFrame(data)
+
+
 try:
     response = requests.get(API_BASE)
-    data = pd.DataFrame
-        
+    if response.status_code == 200:
+        df = pd.DataFrame(response.json())
+except:
+    pass
+
     st.metric("Total Customers", data['total_customers'].sum() if 'total_customers' in data.columns else "N/A")
     st.metric("Average Waiting Minutes", round(data['avg_wait_min'].mean(), 1) if 'avg_wait_min' in data.columns else "N/A")
         
@@ -30,5 +36,5 @@ try:
     else:
         st.warning("No data available from the API.")
 
-except:
-    st.error("Could not fetch community data.")
+if st.button("Return to Store Homepage?"):
+    st.switch_page("pages/13_Store_Owner_Home.py")
