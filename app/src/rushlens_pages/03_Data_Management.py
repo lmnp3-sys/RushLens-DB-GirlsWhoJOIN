@@ -1,10 +1,13 @@
+# John feature page: Check data quality and management
+##################################################
+
 import streamlit as st
 import requests
 import pandas as pd
 
 st.title('Data Quality & Store Management')
 
-API_BASE = 'http://localhost:8339/rushlens'
+API_BASE = 'http://localhost:4000/rushlens'
 
 tab1, tab2, tab3 = st.tabs(['Data Quality Checks', 
                             'Add New Store',
@@ -56,6 +59,60 @@ with tab2:
         capacity = st.number_input('Capacity', min_value=1, value=50)
         location_id = st.number_input('Location ID', min_value=1)
 
+        submitted = st.form_submit_button('Add Store')
+
+        if submitted:
+            data = {
+                'store_name': store_name,
+                'store_type': store_type,
+                'capacity': capacity,
+                'location_id': location_id
+            }
+
+            reponse = requests.post(f'{API_BASE}/store', json=data)
+
+            if response.status_code == 200:
+                st.success(f'Successfully added {store_name}!')
+            else:
+                st.error(f'Failed to add store: {response.text}')
 
 
+# TAB 3: Update Store Configuration
+with tab3:
+    st.header('Update Store Configuration')
+
+    # Get all stores
+    try:
+        response = requests.get(f'{API_BASE}/store')
+        if response.status_code == 200:
+            stores = response.json()
+
+            if stores:
+                store_names = {s['store_name']: s['store_id'] for s in stores}
+                selected_store = st.selectbox('Select Store:', options=list(store_name.keys()))
+
+                store_id = store_names[selected_store]
+
+                # Update form
+                with st.form('update_store'):
+                    new_name = st.text_input('New Store Name', value=selected_store)
+                    new_capactity = st.number_input('New Capacity', min_value=1, value=50)
+
+                    updated = st.form_submit_buttom('Update Store')
+
+                    if updated:
+                        data = {
+                            'store_name': new_name,
+                            'capacity': new_capactity
+                        }
+
+                        response = requests.put(f'{API_BASE}/store/{store_id}', json=data)
+
+                        if response.status_code == 200:
+                            st.success(f'Updated {selected_store}')
+                        else:
+                            st.error(f'Failed to update: {response.text}')
+
+    except Exception as e:
+        st.error(f'Error: {e}')
 
