@@ -5,7 +5,7 @@ import plotly.express as px
 
 st.title('Community Foot Traffic Trends')
 
-API_BASE = "http://localhost:4071"
+API_BASE = "http://localhost:4000"
 
 try:
     response = requests.get(API_BASE)
@@ -39,4 +39,3 @@ try:
         
 except requests.exceptions.ConnectionError:
     st.error("Community data cannot be found.")
-    st.code(f"Expected API at: {API_BASE}")
