@@ -6,7 +6,6 @@ import logging
 from modules.nav import SideBarLinks
 
 API_BASE = "http://localhost:4000"
-logger = logging.getLogger(__name__)
 
 st.set_page_config(layout="wide")
 SideBarLinks()
