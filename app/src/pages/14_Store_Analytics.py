@@ -36,11 +36,11 @@ with st.form("analytics_form"):
     )
 
     submitted = st.form_submit_button("Load Info")
-    if submitted:
+if submitted:
     if not store_data:
         st.warning("Invalid Store ID.")
     else:
-        resp = requests.get(f"{API_BASE}/{traffic_id}")
+        resp = requests.get(f"{API_BASE}/{store_id}")
         data = resp.json()
     if not data:
         st.warning("No foot traffic stats are available.")
