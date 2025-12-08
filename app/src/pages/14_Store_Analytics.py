@@ -11,8 +11,6 @@ API_BASE = "http://localhost:4000"
 st.subheader("Store ID")
 store_id = st.number_input("Store ID *", min_value=1)
 
-API_BASE = "http://localhost:4000"
-
 st.set_page_config(layout='wide')
 
 st.write("Weekly Foot Traffic Stats")
