@@ -26,7 +26,7 @@ if st.button('Update Store page',
              use_container_width=True):
     st.switch_page('pages/15_Store_Update_Page.py')
 
-if st.button('View Rushlens Store Homepage Analytics',
+if st.button('View Community Analytics',
              type='primary',
              use_container_width=True):
     st.switch_page('pages/16_Store_Page_Traffic.py')
