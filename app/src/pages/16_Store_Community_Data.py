@@ -24,10 +24,10 @@ try:
 except:
     pass
 
-    st.metric("Total Customers", data['total_customers'].sum() if 'total_customers' in data.columns else "N/A")
-    st.metric("Average Waiting Minutes", round(data['avg_wait_min'].mean(), 1) if 'avg_wait_min' in data.columns else "N/A")
+    st.metric("Total Customers", data['total_customers'].sum() if 'total_customers' in df.columns else "N/A")
+    st.metric("Average Waiting Minutes", round(data['avg_wait_min'].mean(), 1) if 'avg_wait_min' in df.columns else "N/A")
         
-    if 'hour' in data.columns and 'total_customers' in data.columns:
+    if 'hour' in df.columns and 'total_customers' in df.columns:
         fig = px.line(data, x='hour', y='total_customers', title="Traffic This Week")
         st.plotly_chart(fig)
    
