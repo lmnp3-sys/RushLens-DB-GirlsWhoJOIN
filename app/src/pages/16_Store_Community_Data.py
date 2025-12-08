@@ -20,6 +20,7 @@ try:
     if 'hour' in df.columns and 'avg_visitors' in df.columns:
         fig = px.line(df, x='hour', y='avg_visitors', title="Traffic This Week")
         st.plotly_chart(fig)
+   
         st.subheader("Raw Data")
         st.dataframe(df)
     else:
