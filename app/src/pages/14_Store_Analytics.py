@@ -46,16 +46,9 @@ if submitted:
     if not data:
         st.warning("No foot traffic stats are available.")
         st.stop()
-
     df = pd.DataFrame(data)
-
-except Exception as e:
-    st.error(f"Could not load foot traffic stats: {e}")
-    st.stop()
-
-# Use df, not data
-if "store_id" in df.columns and "avg_wait_min" in df.columns and "store_name" in df.columns:
-    st.subheader("This week's wait")
+    if "store_id" in df.columns and "avg_wait_min" in df.columns and "store_name" in df.columns:
+        st.subheader("This week's wait")
     try:
         st.bar_chart(df.set_index("store_name")["avg_wait_min"])
     except Exception as e:
