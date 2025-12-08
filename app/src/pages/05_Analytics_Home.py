@@ -27,14 +27,14 @@ st.write('### What would you like to do today?')
 if st.button('View Traffic Analytics Dashboard',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/11_Traffic_Analytics.py')
+    st.switch_page('pages/06_Traffic_Analytics.py')
 
 if st.button('Compare Store Performance',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/12_Store_Comparison.py')
+    st.switch_page('pages/07_Store_Comparison.py')
 
 if st.button('Monitor System Alerts',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/13_System_Alerts.py')
+    st.switch_page('pages/08_System_Alerts.py')

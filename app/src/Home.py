@@ -71,7 +71,7 @@ if st.button('I am a Data Analyst',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'SysAdmin'
-    st.switch_page('pages/05_Timmy_Home.py')
+    st.switch_page('pages/05_Analytics_Home.py')
 
 if st.button('I am a System Admin', 
             type = 'primary', 
