@@ -8,7 +8,7 @@ st.set_page_config(layout='wide')
 SideBarLinks()
 
 st.title("My Analytics")
-API_BASE = "http://localhost:4000"
+API_BASE = "http://localhost:4010"
 
 st.subheader("Store ID")
 store_id = st.number_input("Store ID *", min_value=1)
