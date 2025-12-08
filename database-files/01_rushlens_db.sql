@@ -129,7 +129,6 @@ CREATE TABLE IF NOT EXISTS Store(
     store_type VARCHAR(50),
     status VARCHAR(20),
     capacity INT,
-    outlet_num INT,
     FOREIGN KEY (location_id) REFERENCES Location (location_id)
         ON UPDATE RESTRICT ON DELETE RESTRICT
 );

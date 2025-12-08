@@ -7,7 +7,7 @@ import pandas as pd
 
 st.title('Data Quality & Store Management')
 
-API_BASE = 'http://localhost:4000/rushlens'
+API_BASE = 'http://host.docker.internal:4000/rushlens'
 
 tab1, tab2, tab3 = st.tabs(['Data Quality Checks', 
                             'Add New Store',
@@ -87,17 +87,26 @@ with tab3:
         if response.status_code == 200:
             stores = response.json()
 
+            # if API returns a string, parse it
+            if isinstance(stores, str):
+                import json
+                stores = json.loads(stores)
+            st.write(stores)
+
             if stores:
                 store_names = {s['store_name']: s['store_id'] for s in stores}
                 selected_store = st.selectbox('Select Store:', options=list(store_name.keys()))
 
                 store_id = store_names[selected_store]
 
+                # get current store data to pre-fill form
+                selected_store_data = next(s for s in stores if s['store_name' == selected_store])
+                current_capacity = selected_store_data.get('capacity', 50)
+
                 # Update form
                 with st.form('update_store'):
                     new_name = st.text_input('New Store Name', value=selected_store)
-                    new_capactity = st.number_input('New Capacity', min_value=1, value=50)
-
+                    new_capactity = st.number_input('New Capacity', min_value=1, value=current_capacity)
                     updated = st.form_submit_buttom('Update Store')
 
                     if updated:
@@ -112,6 +121,8 @@ with tab3:
                             st.success(f'Updated {selected_store}')
                         else:
                             st.error(f'Failed to update: {response.text}')
+        else:
+            st.error(f'Failed to fetch stores: {response.status_code}')
 
     except Exception as e:
         st.error(f'Error: {e}')
