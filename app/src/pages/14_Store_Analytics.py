@@ -40,5 +40,5 @@ if "store_id" in df.columns and "avg_wait_min" in df.columns and "store_name" in
     except Exception as e:
         st.info(f"Could not plot average wait times: {e}")
 
-if st.button("Return to Store Home Page"):
+if st.button("Return to Store Home Page?"):
     st.switch_page("pages/13_Store_Owner_Home.py")
