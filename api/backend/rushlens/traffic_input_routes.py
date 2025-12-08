@@ -79,10 +79,6 @@ def create_traffic_input():
     except Error as e:
         return jsonify({"error": str(e)}), 500
     
-<<<<<<<<< Temporary merge branch 1
-
-=========
->>>>>>>>> Temporary merge branch 2
 # Route 4: DELETE invalid or unecessary FootTrafficData
 @traffic_input.route('/traffic/{traffic_id}', methods=['DELETE'])
 def delete_traffic_record(traffic_id):
