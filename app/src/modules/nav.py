@@ -43,7 +43,7 @@ def AnalystHomeNav():
 
 def AdminHomeNav():
     st.sidebar.page_link("pages/20_Admin_Home.py", label="Admin Dashboard", icon="🖥️")
-    st.sidebar.page_link("pages/21_ML_Model_Mgmt.py", label="ML Management", icon="🤖")
+    # st.sidebar.page_link("pages/21_ML_Model_Mgmt.py", label="ML Management", icon="🤖")
 
 
 # Handling Sidebar

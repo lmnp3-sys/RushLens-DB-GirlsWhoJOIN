@@ -5,7 +5,7 @@ import streamlit as st
 import requests
 import pandas as pd
 
-st.title('Maintenance Planning')
+st.title('⛑️Maintenance Planning')
 
 API_BASE = 'http://host.docker.internal:4000/rushlens'
 

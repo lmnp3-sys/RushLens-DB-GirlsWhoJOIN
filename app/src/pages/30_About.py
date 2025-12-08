@@ -8,12 +8,12 @@ st.write("# About this App")
 
 st.markdown(
     """
-    This is a demo app for Data and Software in International Government and Politics Dialogue 2025 Project Course.  
+    RushLens is a smart platform that helps users understand how busy a space is—without 
+    having to be there. By combining user-entered data with sensor-generated data, 
+    RushLens analyzes patterns to provide high-level insights that guide decision-making. 
+    Users can see real-time and predicted occupancy for places like Curry, Starbucks, Snell, 
+    or even laundry rooms, helping them plan when to visit.
 
-    The goal of this demo is to provide information on the tech stack 
-    being used as well as demo some of the features of the various platforms. 
-
-    Stay tuned for more information and features to come!
     """
 )
 
