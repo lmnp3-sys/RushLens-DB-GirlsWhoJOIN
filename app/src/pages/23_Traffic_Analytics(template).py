@@ -6,7 +6,7 @@ import plotly.express as px
 st.title('🚦 Traffic Analytics Dashboard')
 
 # API endpoint - based on your traffic_input_routes.py
-API_URL = "http://localhost:8339/api/traffic_input"   #have to change this
+API_URL = "http://host.docker.internal:4000/rushlens/traffic"   #have to change this
 
 try:
     # Fetch data from API

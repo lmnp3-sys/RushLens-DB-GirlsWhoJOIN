@@ -7,7 +7,7 @@ from mysql.connector import Error
 #Create the blueprint 
 analytics =  Blueprint('analytics', __name__)
 
-# GET all sensors with their status, type, store,. 
+# Route 1: GET all sensors with their status, type, store,. 
 @analytics.route("/sensor-device", methods=["GET"])
 def get_all_sensor():
     try:
@@ -23,7 +23,7 @@ def get_all_sensor():
          cursor.close()
 
     
-#Get all sensor data 
+# Route 2: Get all sensor data 
 @analytics.route('/sensor-data', methods=['GET'])
 def get_sensor_data():
     try:
@@ -34,7 +34,7 @@ def get_sensor_data():
     finally:
         cursor.close()
 
-# Create new system alert
+# Route 3: Create new system alert
 @analytics.route("/system-alerts", methods=["POST"])
 def create_system_alert():
     try:
@@ -79,7 +79,7 @@ def create_system_alert():
         return jsonify({"error": str(e)}), 500
     
 
-# Update an existing System Alert information
+# Route 4: Update an existing System Alert information
 @analytics.route("/system-alerts/<int:alert_id>", methods=["PUT"])
 def update_system_alert(alert_id):
     try:
@@ -124,7 +124,7 @@ def update_system_alert(alert_id):
     except Error as e:
         return jsonify({"error": str(e)}), 500
 
-# Remove/delete a sensor device if broken
+# Route 5: Remove/delete a sensor device if broken
 @analytics.route('/sensor-device/<int:sensor_id>', methods=['DELETE'])
 def delete_sensor(sensor_id):
     try:

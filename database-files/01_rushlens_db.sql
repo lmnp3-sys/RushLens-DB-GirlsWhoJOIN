@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS Customers(
     customer_id INT PRIMARY KEY,
     firstName VARCHAR(25),
     lastName VARCHAR(25),
-    neuID INT,
+    neuID VARCHAR(20),
     store_id INT,
     FOREIGN KEY (store_id) REFERENCES Store (store_id)
         ON UPDATE RESTRICT ON DELETE RESTRICT
@@ -149,13 +149,13 @@ CREATE TABLE IF NOT EXISTS Location(
 DROP TABLE IF EXISTS SensorDevice;
 CREATE TABLE IF NOT EXISTS SensorDevice(
     sensor_id INT PRIMARY KEY,
-    store_id INT,
+    store_id INT NOT NULL,
     sensorType VARCHAR(50),
     status BOOLEAN,
     lastCalibrationDate DATETIME,
     firmwareVersion INT,
     installDate DATETIME,
-    FOREIGN KEY (store_id) REFERENCES store (store_id)
+    FOREIGN KEY (store_id) REFERENCES Store (store_id)
         ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
