@@ -5,7 +5,7 @@ import streamlit as st
 import requests
 import pandas as pd
 
-st.title('Data Quality & Store Management')
+st.title('📊Data Quality & Store Management')
 
 API_BASE = 'http://host.docker.internal:4000/rushlens'
 
@@ -19,7 +19,7 @@ with tab1:
     st.header('Data Quality Check Results')
 
     try:
-        response = requests.get(f'{API_BASE}/data-quality-check')
+        response = requests.get(f'{API_BASE}/data-quality-checks')
         if response.status_code == 200:
             checks = response.json()
 
@@ -27,7 +27,7 @@ with tab1:
                 df = pd.DataFrame(checks)
 
                 # show failed and passed
-                col1, col2 = st.column(2)
+                col1, col2 = st.columns(2)
                 with col1:
                     passed = len(df[df['status'] == 'passed'])
                     st.metric('Passed Checks', passed)
@@ -36,7 +36,8 @@ with tab1:
                     failed = len(df[df['status'] == 'failed'])
                     st.metric('Failed Checks', failed)
 
-                st.dataframe(df, use_containter_width=True)
+                # display the df
+                st.dataframe(df, use_container_width=True)
 
 
                 # Option to flag bad data
@@ -45,7 +46,10 @@ with tab1:
                 if st.button('Flag as Issue'):
                     # API call to flag data
                     st.success(f'Flagged check {check_id} for review')
-
+            else:
+                st.warning('No data quality checks returned from API.')
+        else:
+            st.error(f'Failed to fetch data quality checks: {response.status_code}')
     except Exception as e:
         st.error(f'Error: {e}')
 

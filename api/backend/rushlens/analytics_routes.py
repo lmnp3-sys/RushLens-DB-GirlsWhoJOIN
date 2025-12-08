@@ -140,5 +140,22 @@ def delete_sensor(sensor_id):
     finally:
         cursor.close()
 
+
+# Route 6: Get all DataQualityCheck
+@analytics.route('/data-quality-checks', methods=['GET'])
+def get_all_data_quality_checks():
+    try:
+        cursor = db.get_db().cursor()
+
+        # Prepare the Base query
+        query = "SELECT * FROM DataQualityCheck"
+        cursor.execute(query)
+        result = cursor.fetchall()
+
+        return jsonify(result), 200
+    finally:
+         cursor.close()
+
+
         
         
