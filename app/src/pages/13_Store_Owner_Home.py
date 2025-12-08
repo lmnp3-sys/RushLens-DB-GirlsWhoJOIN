@@ -29,3 +29,4 @@ if st.button('View Community Analytics',
              type='primary',
              use_container_width=True):
     st.switch_page('pages/16_Store_Community_Data.py')
+

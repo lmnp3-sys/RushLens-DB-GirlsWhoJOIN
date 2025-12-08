@@ -38,3 +38,6 @@ else:
 
 if st.button("Return to Store Homepage?"):
     st.switch_page("pages/13_Store_Owner_Home.py")
+
+if st.button("Return to Store Directory!"):
+    st.switch_page("pages/Store_Owner_Home.py")

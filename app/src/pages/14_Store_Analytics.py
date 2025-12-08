@@ -53,3 +53,6 @@ if submitted:
         st.bar_chart(df.set_index("store_name")["avg_wait_min"])
     except Exception as e:
         st.info(f"Could not plot average wait times: {e}")
+
+if st.button("Return to Store Directory?"):
+    st.switch_page("pages/Store_Owner_Home.py")
