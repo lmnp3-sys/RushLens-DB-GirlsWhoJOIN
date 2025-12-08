@@ -19,7 +19,7 @@ traffic_id = 3  # ← supply an actual ID or retrieve it dynamically
 
 store_data = None
 try:
-    resp = requests.get(f"{API_BASE}/traffic/{traffic_id}")
+    resp = requests.get(f"{API_BASE}/{traffic_id}")
     if resp.status_code != 200:
         st.error(f"Error fetching your foot traffic stats: {resp.status_code}")
         st.stop()
@@ -30,18 +30,14 @@ try:
         st.stop()
 
     df = pd.DataFrame(data)
-
-except Exception as e:
-    st.error(f"Could not load foot traffic stats: {e}")
-    st.stop()
-
-# Use df, not data
-if "store_id" in df.columns and "avg_wait_min" in df.columns and "store_name" in df.columns:
-    st.subheader("This week's wait")
-    try:
-        st.bar_chart(df.set_index("store_name")["avg_wait_min"])
-    except Exception as e:
-        st.info(f"Could not plot average wait times: {e}")
+        try:
+                response = requests.put(f"{API_BASE}/{traffic_id}", json=payload)
+                if response.status_code == 200:
+                    st.success(f"View your stats!")
+                else:
+                    st.error("Could not load foot traffic stats.")
+            except:
+                st.error("Error connecting to API.")
 
 if st.button("Return to Store Homepage!"):
     st.switch_page("pages/13_Store_Owner_Home.py")
