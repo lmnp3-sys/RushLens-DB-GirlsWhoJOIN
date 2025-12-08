@@ -9,33 +9,21 @@ API_BASE = "http://localhost:4000"
 
 try:
     response = requests.get(API_BASE)
-    
-    if response.status_code == 200:
-        data = response.json()
-        
+    data = response.json()
+
+    if data:
         df = pd.DataFrame(data)
         
-        col1, col2 = st.columns(3)
-        with col1:
-            st.metric("Total Customers", "182")
-        with col2:
-            st.metric("Average Waiting Mintes", "28")
+    st.metric("Total Customers", df['total_customers'].sum() if 'total_customers' in df.columns else "N/A")
+    st.metric("Average Waiting Minutes", round(df['avg_wait_min'].mean(), 1) if 'avg_wait_min' in df.columns else "N/A")
         
-        st.subheader("Foot Traffic Trends")
-        
-
-        if 'hour' in df.columns and 'avg_visitors' in df.columns:
-            fig = px.line(df, x='hour', y='avg_visitors', 
-                         title='Traffic This Week')
-            st.plotly_chart(fig)
-        else:
-            st.info("Chart unable to display")
-        
-        with st.expander("View Raw Data"):
-            st.dataframe(df)
-            
+    if 'hour' in df.columns and 'avg_visitors' in df.columns:
+        fig = px.line(df, x='hour', y='avg_visitors', title="Traffic This Week")
+        st.plotly_chart(fig)
+        st.subheader("Raw Data")
+        st.dataframe(df)
     else:
-        st.error(f"API returned status code: {response.status_code}")
-        
-except requests.exceptions.ConnectionError:
-    st.error("Community data cannot be found.")
+        st.warning("No data available from the API.")
+
+except:
+    st.error("Could not fetch community data.")
