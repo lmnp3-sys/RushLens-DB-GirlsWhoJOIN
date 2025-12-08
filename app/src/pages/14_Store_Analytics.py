@@ -1,9 +1,17 @@
-import logging
-logger = logging.getLogger(__name__)
 import streamlit as st
+import requests
 from modules.nav import SideBarLinks
 import pandas as pd
-import requests
+
+
+
+SideBarLinks()
+st.title("Update Store")
+API_BASE = "http://localhost:4000"
+
+st.subheader("Store ID")
+store_id = st.number_input("Store ID *", min_value=1)
+
 
 API_BASE = "http://localhost:4000"
 
