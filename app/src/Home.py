@@ -8,6 +8,7 @@ import logging
 logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 # import the main streamlit library as well
 # as SideBarLinks function from src/modules folder
 import streamlit as st
@@ -15,7 +16,7 @@ from modules.nav import SideBarLinks
 
 # streamlit supports reguarl and wide layout (how the controls
 # are organized/displayed on the screen).
-st.set_page_config(layout = 'wide')
+st.set_page_config(page_title="RushLens", page_icon="📊", layout="wide")
 
 # If a user is at this page, we assume they are not 
 # authenticated.  So we change the 'authenticated' value
@@ -50,11 +51,11 @@ if st.button("I am a User",
     st.session_state['role'] = 'pol_strat_advisor'
     # we add the first name of the user (so it can be displayed on 
     # subsequent pages). 
-    st.session_state['first_name'] = 'John'
+    st.session_state['first_name'] = 'Anne'
     # finally, we ask streamlit to switch to another page, in this case, the 
     # landing page for this particular user type
     logger.info("Logging in as Anne")
-    st.switch_page('pages/00_Pol_Strat_Home.py')
+    st.switch_page('pages/09_Student_Home.py')
 
 if st.button('I am a Store Owner', 
             type = 'primary', 
@@ -62,7 +63,7 @@ if st.button('I am a Store Owner',
     st.session_state['authenticated'] = True
     st.session_state['store_id'] = '2'
     st.session_state['first_name'] = 'Michelle'
-    st.switch_page('pages/12_Store_Owner_Home.py')
+    st.switch_page('pages/13_Store_Owner_Home.py')
 
 if st.button('I am a Data Analyst', 
             type = 'primary', 
@@ -70,7 +71,7 @@ if st.button('I am a Data Analyst',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'SysAdmin'
-    st.switch_page('pages/20_Admin_Home.py')
+    st.switch_page('pages/05_Timmy_Home.py')
 
 if st.button('I am a System Admin', 
             type = 'primary', 
@@ -78,5 +79,5 @@ if st.button('I am a System Admin',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'SysAdmin'
-    st.switch_page('pages/20_Admin_Home.py')
+    st.switch_page('pages/01_John_Home.py')
 
