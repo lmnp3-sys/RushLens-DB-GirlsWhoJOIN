@@ -28,4 +28,5 @@ if st.button('Update Store page',
 if st.button('View Community Analytics',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/16_Store_Page_Traffic.py')
+    st.switch_page('pages/16_Store_Community_Data.py')
+

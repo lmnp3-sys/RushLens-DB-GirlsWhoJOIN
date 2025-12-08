@@ -80,7 +80,7 @@ def create_traffic_input():
         return jsonify({"error": str(e)}), 500
     
 # Route 4: DELETE invalid or unecessary FootTrafficData
-@traffic_input.route('/traffic/<int:traffic_id>', methods=['DELETE'])
+@traffic_input.route('/traffic/{traffic_id}', methods=['DELETE'])
 def delete_traffic_record(traffic_id):
     try:
         cursor = db.get_db().cursor()

@@ -9,12 +9,12 @@ import pandas as pd
 import requests
 
 # 
-API_BASE = "http://localhost:4000/rushlen"
+API_BASE = "http://host.docker.internal:4000/rushlens"
 
 st.set_page_config(layout='wide')
 SideBarLinks()
 
-st.title("📊 Traffic Analytics Dashboard")
+st.title("📊Traffic Analytics Dashboard")
 st.write("See basic trends from sensor data.")
 
 # --- Call your Flask backend to get sensor data ---
