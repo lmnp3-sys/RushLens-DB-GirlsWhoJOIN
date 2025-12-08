@@ -22,7 +22,7 @@ SideBarLinks()
 st.title("My Analytics")
 st.write("Weekly Foot Traffic Stats")
 
-traffic_id = 1  # ← supply an actual ID or retrieve it dynamically
+traffic_id = 3  # ← supply an actual ID or retrieve it dynamically
 
 try:
     resp = requests.get(f"{API_BASE}/traffic/{traffic_id}")
