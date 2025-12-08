@@ -1,7 +1,13 @@
 #BLUEPRINT 4 Traffic
+<<<<<<< HEAD
+from ml_models import Blueprint, jsonify , request
+from backend.db_connection import db
+from backend.db_connection import Error
+=======
 from flask import Blueprint, jsonify , request
 from db_connection import db
 from mysql.connector import Error
+>>>>>>> fc75828ef2f11b5fe953f6de2f48349ac82d2110
 
 #Create the blueprint 
 traffic_input =  Blueprint('traffic_input', __name__)
@@ -47,7 +53,7 @@ def create_traffic_input():
 
         resolved_value = 1 if data.get("resolved", False) else 0
 
-        # Insert new system alert
+        # Insert new data
         query = """
         INSERT INTO FootTrafficData (traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count)
         VALUES (%s, %s, %s, %s, %s, %s)

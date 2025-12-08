@@ -21,10 +21,10 @@ if st.button('View Store Foot Traffic Statistics Dashboard',
              use_container_width=True):
     st.switch_page('pages/14_Store_Analytics.py')
 
-if st.button('Check on recent Store information',
+if st.button('Update Store page',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/14_Store_Todaypy')
+    st.switch_page('pages/15_Store_Update_Page.py')
 
 if st.button('View Rushlens Store Homepage Analytics',
              type='primary',
