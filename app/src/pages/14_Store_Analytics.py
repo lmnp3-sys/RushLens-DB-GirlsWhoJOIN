@@ -55,4 +55,4 @@ if submitted:
         st.info(f"Could not plot average wait times: {e}")
 
 if st.button("Return to Store Directory?"):
-    st.switch_page("pages/Store_Owner_Home.py")
+    st.switch_page("pages/13_Store_Owner_Home.py")
