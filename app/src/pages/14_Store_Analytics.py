@@ -34,5 +34,12 @@ try:
 except:
     st.error("Error connecting to API.")
 
+if df is not None and {"store_id", "avg_wait_min", "store_name"}.issubset(df.columns):
+    st.subheader("This week's wait")
+    try:
+        st.bar_chart(df.set_index("store_name")["avg_wait_min"])
+    except Exception as e:
+        st.info(f"Could not plot average wait times: {e}")
+
 if st.button("Return to Store Homepage!"):
     st.switch_page("pages/13_Store_Owner_Home.py")
