@@ -41,7 +41,7 @@ st.write('#### HI! As which user would you like to log in?')
 # functionality, we put a button on the screen that the user 
 # can click to MIMIC logging in as that mock user. 
 
-if st.button("I am an User", 
+if st.button("I am a User", 
             type = 'primary', 
             use_container_width=True):
     # when user clicks the button, they are now considered authenticated
@@ -72,7 +72,7 @@ if st.button('I am a Data Analyst',
     st.session_state['first_name'] = 'SysAdmin'
     st.switch_page('pages/20_Admin_Home.py')
 
-if st.button('I am a CEO', 
+if st.button('I am a System Admin', 
             type = 'primary', 
             use_container_width=True):
     st.session_state['authenticated'] = True

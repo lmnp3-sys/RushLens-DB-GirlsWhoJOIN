@@ -1,15 +1,16 @@
-#BLUEPRINT 4 Traffic
+# BLUEPRINT 4 Traffic
 
 from flask import Blueprint, jsonify, request
 from db_connection import db
 from mysql.connector import Error
 
-#Create the blueprint 
+# Create the blueprint 
 traffic_input =  Blueprint('traffic_input', __name__)
 
-#GET all inputs about FootTrafficData
+# Route 1: GET all inputs about FootTrafficData
 @traffic_input.route("/traffic", methods=["GET"])
 def get_all_inputs():
+    cursor=None
     try:
         cursor = db.get_db().cursor()
 
@@ -18,11 +19,12 @@ def get_all_inputs():
         cursor.execute(query)
         result = cursor.fetchall()
 
-        return jsonify(result),
+        return jsonify(result)
     finally:
-         cursor.close()
+         if cursor:
+             cursor.close()
 
-#GET specific FootTrafficData 
+# Route 2: GET specific FootTrafficData 
 @traffic_input.route('/traffic/<int:traffic_id>', methods=['GET'])
 def get_traffic(traffic_id):
     cursor = db.get_db().cursor()
@@ -32,7 +34,7 @@ def get_traffic(traffic_id):
     result = cursor.fetchone()
     return jsonify(result)
 
-#CREATE new FootTrafficData Inputs
+# Route 3: CREATE new FootTrafficData Inputs
 @traffic_input.route("/traffic", methods=["POST"])
 def create_traffic_input():
     try:
@@ -78,7 +80,7 @@ def create_traffic_input():
         return jsonify({"error": str(e)}), 500
     
 
-#DELETE invalid or unecessary FootTrafficData
+# Route 4: DELETE invalid or unecessary FootTrafficData
 @traffic_input.route('/traffic/<int:traffic_id>', methods=['DELETE'])
 def delete_traffic_record(traffic_id):
     try:

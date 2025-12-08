@@ -1,3 +1,4 @@
+# BLUEPRINT 3 User/Customer
 
 from flask import Blueprint, request, jsonify
 from db_connection import db
@@ -5,11 +6,11 @@ from mysql.connector import Error
 
 user_customer = Blueprint("user_customer", __name__)
 
-# GET all users
+# Route 1: GET all users
 @user_customer.route("/users", methods=["GET"])
 def get_all_users():
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
         cursor.execute("SELECT * FROM User")
         return jsonify(cursor.fetchall()), 200
     except Error as e:
@@ -18,12 +19,11 @@ def get_all_users():
         cursor.close()
 
 
-# GET specific user
-
+# Route 2: GET specific user
 @user_customer.route("/users/<int:user_id>", methods=["GET"])
 def get_user(user_id):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
         cursor.execute("SELECT * FROM User WHERE user_id = %s", (user_id,))
         result = cursor.fetchone()
 
@@ -37,8 +37,7 @@ def get_user(user_id):
         cursor.close()
 
 
-# CREATE user
-
+# Route 3: CREATE user
 @user_customer.route("/users", methods=["POST"])
 def create_user():
     try:
@@ -63,7 +62,7 @@ def create_user():
         cursor.close()
 
 
-# UPDATE user
+# Route 4: UPDATE user
 @user_customer.route("/users/<int:user_id>", methods=["PUT"])
 def update_user(user_id):
     try:
@@ -85,8 +84,7 @@ def update_user(user_id):
         cursor.close()
 
 
-# DELETE user
-
+# Route 5: DELETE user
 @user_customer.route("/users/<int:user_id>", methods=["DELETE"])
 def delete_user(user_id):
     try:
@@ -103,24 +101,26 @@ def delete_user(user_id):
 
 
 
-# GET all customers
+# Route 6: GET all customers
 @user_customer.route("/customers", methods=["GET"])
 def get_customers():
+    cursor = None # initialize cursor
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
         cursor.execute("SELECT * FROM Customers")
         return jsonify(cursor.fetchall()), 200
     except Error as e:
         return jsonify({"error": str(e)}), 500
     finally:
-        cursor.close()
+        if cursor:
+            cursor.close()
 
 
-# GET a specific customer
+# Route 7: GET a specific customer
 @user_customer.route("/customers/<int:customer_id>", methods=["GET"])
 def get_customer(customer_id):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
         cursor.execute("SELECT * FROM Customers WHERE customer_id = %s", (customer_id,))
         result = cursor.fetchone()
 
@@ -135,7 +135,7 @@ def get_customer(customer_id):
         cursor.close()
 
 
-# CREATE customer
+# Route 8: CREATE customer
 @user_customer.route("/customers", methods=["POST"])
 def create_customer():
     try:
@@ -168,7 +168,7 @@ def create_customer():
         cursor.close()
 
 
-# UPDATE customer
+# Route 9: UPDATE customer
 @user_customer.route("/customers/<int:customer_id>", methods=["PUT"])
 def update_customer(customer_id):
     try:
@@ -203,7 +203,7 @@ def update_customer(customer_id):
         cursor.close()
 
 
-# DELETE customer
+# Route 10: DELETE customer
 @user_customer.route("/customers/<int:customer_id>", methods=["DELETE"])
 def delete_customer(customer_id):
     try:
