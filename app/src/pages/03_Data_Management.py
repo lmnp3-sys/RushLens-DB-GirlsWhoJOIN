@@ -91,23 +91,26 @@ with tab3:
             if isinstance(stores, str):
                 import json
                 stores = json.loads(stores)
-            st.write(stores)
 
-            if stores:
+            # ensure stores is a list of dicts
+            if isinstance(stores, list) and stores:
+                # build a dic of store_name -> store_id
                 store_names = {s['store_name']: s['store_id'] for s in stores}
-                selected_store = st.selectbox('Select Store:', options=list(store_name.keys()))
 
+                # Select store dropdown
+                selected_store = st.selectbox("Select Store:", options=list(store_names.keys()))
                 store_id = store_names[selected_store]
 
-                # get current store data to pre-fill form
-                selected_store_data = next(s for s in stores if s['store_name' == selected_store])
-                current_capacity = selected_store_data.get('capacity', 50)
+                # Get the selected store data
+                selected_store_data = next(s for s in stores if s['store_name'] == selected_store)
+                current_capacity = selected_store_data.get("capacity", 50)
 
                 # Update form
                 with st.form('update_store'):
                     new_name = st.text_input('New Store Name', value=selected_store)
                     new_capactity = st.number_input('New Capacity', min_value=1, value=current_capacity)
-                    updated = st.form_submit_buttom('Update Store')
+
+                    updated = st.form_submit_button("Update Store")
 
                     if updated:
                         data = {
@@ -118,9 +121,13 @@ with tab3:
                         response = requests.put(f'{API_BASE}/store/{store_id}', json=data)
 
                         if response.status_code == 200:
-                            st.success(f'Updated {selected_store}')
+                            st.success(f'Updated {selected_store} successfully!')
                         else:
-                            st.error(f'Failed to update: {response.text}')
+                            st.error(f'Failed to update {selected_store}: {response.text}')
+
+            else:
+                st.warning('No stores found from the API.')
+        
         else:
             st.error(f'Failed to fetch stores: {response.status_code}')
 
