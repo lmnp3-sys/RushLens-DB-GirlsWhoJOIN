@@ -3,14 +3,14 @@ import streamlit as st
 import requests
 import pandas as pd
 import logging
-from modules.nav import SidebarLinks
+from modules.nav import SideBarLinks
 
 API_BASE = "http://host.docker.internal:4000/rushlen"
 
 logger = logging.getLogger(__name__)
 
 st.set_page_config(layout="wide")
-SidebarLinks()
+SideBarLinks()
 
 st.title("Curry Dining Wait Times")
 st.write("Check the current expected wait times across Curry locations.")

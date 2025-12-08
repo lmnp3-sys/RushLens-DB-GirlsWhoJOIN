@@ -1,20 +1,21 @@
-import logging
-logger = logging.getLogger(__name__)
 import streamlit as st
+import requests
 from modules.nav import SideBarLinks
 import pandas as pd
-import requests
+
+SideBarLinks()
+st.title("My Analytics")
 
 API_BASE = "http://localhost:4000"
 
+st.subheader("Store ID")
+store_id = st.number_input("Store ID *", min_value=1)
+
 st.set_page_config(layout='wide')
 
-SideBarLinks()
-
-st.title("My Analytics")
 st.write("Weekly Foot Traffic Stats")
 
-traffic_id = 1  # ← supply an actual ID or retrieve it dynamically
+traffic_id = 3  # ← supply an actual ID or retrieve it dynamically
 
 try:
     resp = requests.get(f"{API_BASE}/traffic/{traffic_id}")
@@ -40,3 +41,6 @@ if "store_id" in df.columns and "avg_wait_min" in df.columns and "store_name" in
         st.bar_chart(df.set_index("store_name")["avg_wait_min"])
     except Exception as e:
         st.info(f"Could not plot average wait times: {e}")
+
+if st.button("Return to Store Homepage!"):
+    st.switch_page("pages/13_Store_Owner_Home.py")

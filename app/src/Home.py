@@ -62,6 +62,7 @@ if st.button('I am a Store Owner',
             use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['store_id'] = '2'
+    st.session_state['role'] = 'owner'
     st.session_state['first_name'] = 'Michelle'
     st.switch_page('pages/13_Store_Owner_Home.py')
 
@@ -70,7 +71,8 @@ if st.button('I am a Data Analyst',
             use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'Timmy'
+<<<<<<< HEAD
+    st.session_state['first_name'] = 'SysAdmin'
     st.switch_page('pages/05_Analytics_Home.py')
 
 if st.button('I am a System Admin', 
@@ -78,6 +80,6 @@ if st.button('I am a System Admin',
             use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'John'
+    st.session_state['first_name'] = 'SysAdmin'
     st.switch_page('pages/01_John_Home.py')
 
