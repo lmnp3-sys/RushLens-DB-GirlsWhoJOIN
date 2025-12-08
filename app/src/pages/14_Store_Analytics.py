@@ -14,7 +14,7 @@ SideBarLinks()
 st.title("My Analytics")
 st.write("Weekly Foot Traffic Stats")
 
-traffic_id = 1  # ← supply an actual ID or retrieve it dynamically
+traffic_id = 1  
 
 try:
     resp = requests.get(f"{API_BASE}/traffic/{traffic_id}")
@@ -33,10 +33,12 @@ except Exception as e:
     st.error(f"Could not load foot traffic stats: {e}")
     st.stop()
 
-# Use df, not data
 if "store_id" in df.columns and "avg_wait_min" in df.columns and "store_name" in df.columns:
     st.subheader("This week's wait")
     try:
         st.bar_chart(df.set_index("store_name")["avg_wait_min"])
     except Exception as e:
         st.info(f"Could not plot average wait times: {e}")
+
+if st.button("Return to Store Home Page"):
+    st.switch_page("pages/13_Store_Owner_Home.py")

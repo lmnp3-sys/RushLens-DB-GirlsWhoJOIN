@@ -40,3 +40,6 @@ try:
 except requests.exceptions.ConnectionError:
     st.error("Community data cannot be found.")
     st.code(f"Expected API at: {API_BASE}")
+
+if st.button("Return to Store Home Page"):
+    st.switch_page("pages/13_Store_Owner_Home.py")
