@@ -5,7 +5,7 @@ import plotly.express as px
 
 st.title('Community Foot Traffic Trends')
 
-API_BASE = "http://localhost:4000"
+API_BASE = "http://localhost:4071"
 
 try:
     response = requests.get(API_BASE)
