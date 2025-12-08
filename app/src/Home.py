@@ -60,9 +60,9 @@ if st.button('I am a Store Owner',
             type = 'primary', 
             use_container_width=True):
     st.session_state['authenticated'] = True
-    st.session_state['role'] = 'usaid_worker'
-    st.session_state['first_name'] = 'Mohammad'
-    st.switch_page('pages/10_USAID_Worker_Home.py')
+    st.session_state['store_id'] = '2'
+    st.session_state['first_name'] = 'Michelle'
+    st.switch_page('pages/12_Store_Owner_Home.py')
 
 if st.button('I am a Data Analyst', 
             type = 'primary', 
