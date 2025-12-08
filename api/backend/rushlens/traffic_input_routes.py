@@ -1,14 +1,16 @@
-#BLUEPRINT 4 Traffic
-from ml_models import Blueprint, jsonify , request
-from backend.db_connection import db
-from backend.db_connection import Error
+# BLUEPRINT 4 Traffic
 
-#Create the blueprint 
+from flask import Blueprint, jsonify, request
+from db_connection import db
+from mysql.connector import Error
+
+# Create the blueprint 
 traffic_input =  Blueprint('traffic_input', __name__)
 
-#GET all inputs about FootTrafficData
+# Route 1: GET all inputs about FootTrafficData
 @traffic_input.route("/traffic", methods=["GET"])
 def get_all_inputs():
+    cursor=None
     try:
         cursor = db.get_db().cursor()
 
@@ -17,11 +19,12 @@ def get_all_inputs():
         cursor.execute(query)
         result = cursor.fetchall()
 
-        return jsonify(result),
+        return jsonify(result)
     finally:
-         cursor.close()
+         if cursor:
+             cursor.close()
 
-#GET specific FootTrafficData 
+# Route 2: GET specific FootTrafficData 
 @traffic_input.route('/traffic/<int:traffic_id>', methods=['GET'])
 def get_traffic(traffic_id):
     cursor = db.get_db().cursor()
@@ -31,7 +34,7 @@ def get_traffic(traffic_id):
     result = cursor.fetchone()
     return jsonify(result)
 
-#CREATE new FootTrafficData Inputs
+# Route 3: CREATE new FootTrafficData Inputs
 @traffic_input.route("/traffic", methods=["POST"])
 def create_traffic_input():
     try:
@@ -76,8 +79,7 @@ def create_traffic_input():
     except Error as e:
         return jsonify({"error": str(e)}), 500
     
-
-#DELETE invalid or unecessary FootTrafficData
+# Route 4: DELETE invalid or unecessary FootTrafficData
 @traffic_input.route('/traffic/<int:traffic_id>', methods=['DELETE'])
 def delete_traffic_record(traffic_id):
     try:
@@ -94,4 +96,36 @@ def delete_traffic_record(traffic_id):
         cursor.close()
 
         
-        
+# Route 5: UPDATE Store Page
+@traffic_input.route("/traffic/update", methods=["PUT"])
+def update_store(store_id):
+    try:
+        data = request.get_json()
+
+        allowed = ["[traffic_id, data_id, user_id, store_id, avg_wait_min, visitor_count]"]
+
+        updates = []
+        params = []
+
+        for field in allowed:
+            if field in data:
+                updates.append(f"{field} = %s")
+                params.append(data[field])
+
+        if not updates:
+            return jsonify({"Cannot Update"}), 400
+
+        params.append(store_id)
+
+        query = f"UPDATE Store {', '.join(updates)} WHERE store_id = %s"
+
+        cursor = db.get_db().cursor()
+        cursor.execute(query, params)
+        db.get_db().commit()
+
+        return jsonify({"message": 'Store updated'}), 200
+
+    except Error as e:
+        return jsonify({"error": str(e)}), 500
+    finally:
+        cursor.close()
