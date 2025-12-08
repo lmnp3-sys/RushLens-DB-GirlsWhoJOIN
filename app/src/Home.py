@@ -35,7 +35,7 @@ SideBarLinks(show_home=True)
 # set the title of the page and provide a simple prompt. 
 logger.info("Loading the Home page of the app")
 st.title('RushLens Application')
-st.write('\n\n')
+st.write('\n\n')``
 # st.write('### Overview:')
 # st.write('\n')
 st.write('#### HI! As which user would you like to log in?')
