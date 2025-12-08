@@ -1,4 +1,3 @@
-
 import logging
 logger = logging.getLogger(__name__)
 import streamlit as st
@@ -11,7 +10,7 @@ SideBarLinks()
 
 logger.info("Loading Store home page")
 
-st.title(f"Welcome, {st.session_state['first_name']}.")
+st.title(f"Welcome!")
 st.write('')
 st.write('')
 st.write('How is your store doing?')
