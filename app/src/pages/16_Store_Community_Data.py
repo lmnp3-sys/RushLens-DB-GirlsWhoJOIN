@@ -8,10 +8,10 @@ st.title('Community Foot Traffic Trends')
 API_BASE = "http://localhost:4000"
 
 data = [
-    {"hour": 8, "avg_visitors": 12, "total_customers": 12, "avg_wait_min": 5, "store_name": "Store A"},
-    {"hour": 9, "avg_visitors": 20, "total_customers": 20, "avg_wait_min": 7, "store_name": "Store B"},
-    {"hour": 10, "avg_visitors": 18, "total_customers": 18, "avg_wait_min": 6, "store_name": "Store C"},
-    {"hour": 11, "avg_visitors": 25, "total_customers": 25, "avg_wait_min": 10, "store_name": "Store D"},
+    {"hour": 8, "total_customers": 12, "total_customers": 12, "avg_wait_min": 5, "store_name": "Store A"},
+    {"hour": 9, "total_customers": 20, "total_customers": 20, "avg_wait_min": 7, "store_name": "Store B"},
+    {"hour": 10, "total_customers": 18, "total_customers": 18, "avg_wait_min": 6, "store_name": "Store C"},
+    {"hour": 11, "total_customers": 25, "total_customers": 25, "avg_wait_min": 10, "store_name": "Store D"},
 ]
 
 df = pd.DataFrame(data)
@@ -27,8 +27,8 @@ except:
     st.metric("Total Customers", data['total_customers'].sum() if 'total_customers' in data.columns else "N/A")
     st.metric("Average Waiting Minutes", round(data['avg_wait_min'].mean(), 1) if 'avg_wait_min' in data.columns else "N/A")
         
-    if 'hour' in data.columns and 'avg_visitors' in data.columns:
-        fig = px.line(data, x='hour', y='avg_visitors', title="Traffic This Week")
+    if 'hour' in data.columns and 'total_customers' in data.columns:
+        fig = px.line(data, x='hour', y='total_customers', title="Traffic This Week")
         st.plotly_chart(fig)
    
         st.subheader("Raw Data")
