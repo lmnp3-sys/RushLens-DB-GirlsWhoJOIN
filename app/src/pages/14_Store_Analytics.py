@@ -17,6 +17,7 @@ st.write("Weekly Foot Traffic Stats")
 
 traffic_id = 3  # ← supply an actual ID or retrieve it dynamically
 
+store_data = none
 try:
     resp = requests.get(f"{API_BASE}/traffic/{traffic_id}")
     if resp.status_code != 200:
