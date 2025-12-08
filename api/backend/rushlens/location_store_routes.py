@@ -19,7 +19,7 @@ HTTP status code
 # BLUEPRINT 1: Location & Store
 
 from flask import Blueprint, request, jsonify 
-from db_connection import db
+from backend.db_connection import db
 
 # Create the Blueprint
 location_store = Blueprint('location_store', __name__)
