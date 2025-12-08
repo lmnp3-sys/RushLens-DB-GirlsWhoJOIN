@@ -16,7 +16,7 @@ SideBarLinks()
 # John's page
 logger.info('Loading Senior Systems Coordinator home page')
 
-st.title(f'Wecome Senior Systems Coordinator, {st.session_state["first_name"]}.')
+st.title(f'Welcome Senior Systems Coordinator, {st.session_state["first_name"]}.')
 st.write('')
 st.write('')
 st.write('### What would you like to do today?')
