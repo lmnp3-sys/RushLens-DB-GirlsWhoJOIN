@@ -15,7 +15,8 @@ store_id = st.number_input("Store ID *", min_value=1)
 
 st.write("Weekly Foot Traffic Stats")
 
-store_data = None
+traffic_id = 1  # ← supply an actual ID or retrieve it dynamically
+
 try:
     r = requests.get(f"{API_BASE}/{store_id}")
     if r.status_code == 200:
@@ -45,17 +46,17 @@ if submitted:
     if not data:
         st.warning("No foot traffic stats are available.")
         st.stop()
-else:
-    df = pd.DataFrame(store_data if isinstance(store_data, list) else [store_data])
-    st.success("Here's your data!")
 
+    df = pd.DataFrame(data)
 
-if {"store_id", "avg_wait_min", "store_name"}.issubset(df.columns):
-    st.subheader("This week's wait times by store")
+except Exception as e:
+    st.error(f"Could not load foot traffic stats: {e}")
+    st.stop()
+
+# Use df, not data
+if "store_id" in df.columns and "avg_wait_min" in df.columns and "store_name" in df.columns:
+    st.subheader("This week's wait")
     try:
         st.bar_chart(df.set_index("store_name")["avg_wait_min"])
     except Exception as e:
         st.info(f"Could not plot average wait times: {e}")
-
-if st.button("Return to Store Homepage!"):
-    st.switch_page("pages/13_Store_Owner_Home.py")
