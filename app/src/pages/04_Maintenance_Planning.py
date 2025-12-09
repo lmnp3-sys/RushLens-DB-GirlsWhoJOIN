@@ -11,7 +11,7 @@ SideBarLinks()
 st.title('⛑️Maintenance Planning')
 
 # API_BASE = 'http://host.docker.internal:4000/rushlens'
-API_BASE = 'http://web-api:4000'
+API_BASE = 'http://localhost:4000'
 
 
 

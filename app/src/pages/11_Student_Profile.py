@@ -68,7 +68,6 @@ if "profile" in st.session_state and st.session_state.profile:
         except Exception as e:
             st.error(f"Could not connect to backend: {e}")
 
-
 st.subheader("Create New Profile")
 
 new_id = st.number_input("New Customer ID:", min_value=1, step=1)

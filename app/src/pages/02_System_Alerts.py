@@ -11,7 +11,7 @@ SideBarLinks()
 st.title('🚨System Alerts & Monitoring')
 
 # API_BASE = 'http://host.docker.internal:4000/rushlens'
-API_BASE = "http://web-api:4000"
+API_BASE = "http://localhost:4000"
 
 # Display active alerts
 st.header('Active System Alerts')
