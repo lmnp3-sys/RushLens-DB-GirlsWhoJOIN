@@ -1,3 +1,4 @@
+# Michelle's Persona Home Page — Store Owner
 import logging
 logger = logging.getLogger(__name__)
 import streamlit as st
@@ -10,11 +11,13 @@ SideBarLinks()
 
 logger.info("Loading Store home page")
 
+#title 
 st.title(f"Welcome!")
 st.write('')
 st.write('')
 st.write('How is your store doing?')
 
+#redirect to other pages
 if st.button('View Store Foot Traffic Statistics Dashboard',
              type='primary',
              use_container_width=True):
