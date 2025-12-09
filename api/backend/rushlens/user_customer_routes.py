@@ -165,7 +165,9 @@ def create_customer():
     except Error as e:
         return jsonify({"error": str(e)}), 500
     finally:
-        cursor.close()
+        if 'cursor' in locals():
+         cursor.close()
+
 
 
 # Route 9: UPDATE customer
