@@ -27,7 +27,6 @@ except Exception as e:
     st.error(f"Error: {e}")
     st.stop()
 
-
 st.subheader("Your Info")
 st.json(data)
 

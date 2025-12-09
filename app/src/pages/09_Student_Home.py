@@ -29,4 +29,4 @@ if st.button('Update Your Profile',
 if st.button('Explore Historical Traffic Trends',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/12_HistoricalTrends.py')
+    st.switch_page('pages/12_Student_Preferences.py')

@@ -19,7 +19,7 @@ def StudentHomeNav():
     st.sidebar.page_link("pages/09_Student_Home.py", label="Student Dashboard", icon="🎓")
     st.sidebar.page_link("pages/10_Student_Login.py", label="Student Login", icon="👤")
     st.sidebar.page_link("pages/11_Student_Profile.py", label="Update your Profile", icon="🪪")
-    st.sidebar.page_link("pages/12_HistoricalTrends.py", label="Historical Trends", icon="📈")
+    st.sidebar.page_link("pages/12_Student_Preferences.py", label="Student Preferences", icon="📈")
 
 
 # Store Owner persona
