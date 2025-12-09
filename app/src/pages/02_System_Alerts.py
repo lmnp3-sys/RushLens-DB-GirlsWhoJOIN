@@ -7,13 +7,14 @@ import pandas as pd
 
 st.title('🚨System Alerts & Monitoring')
 
-API_BASE = 'http://host.docker.internal:4000/rushlens'
+# API_BASE = 'http://host.docker.internal:4000/rushlens'
+API_BASE = "http://web-api:4000"
 
 # Display active alerts
 st.header('Active System Alerts')
 
 try:
-    response = requests.get(f'{API_BASE}/system-alerts')
+    response = requests.get(f'{API_BASE}/rushlens/system-alerts')
     if response.status_code == 200:
         alerts = response.json()
 
@@ -46,7 +47,7 @@ except Exception as e:
 st.header('Sensor Status Overview')
 
 try:
-    response = requests.get(f'{API_BASE}/sensor-device')
+    response = requests.get(f'{API_BASE}/rushlens/sensor-device')
     if response.status_code == 200:
         sensors = response.json()
 

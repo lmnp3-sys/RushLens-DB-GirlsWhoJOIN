@@ -10,7 +10,7 @@ import pandas as pd
 import requests
 from datetime import datetime
 
-API_BASE = "http://host.docker.internal:4000/rushlens"
+API_BASE = "http://web-api:4000"
 
 st.set_page_config(layout="wide")
 SideBarLinks()
@@ -22,7 +22,7 @@ st.write("Monitor active warnings, system issues, and sensor problems in real ti
 @st.cache_data(ttl=30)
 def fetch_alerts():
     try:
-        resp = requests.get(f"{API_BASE}/system-alerts")
+        resp = requests.get(f"{API_BASE}/rushlens/system-alerts")
         if resp.status_code != 200:
             return f"Error {resp.status_code}", None
         return None, resp.json()

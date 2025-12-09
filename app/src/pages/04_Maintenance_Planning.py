@@ -7,12 +7,15 @@ import pandas as pd
 
 st.title('⛑️Maintenance Planning')
 
-API_BASE = 'http://host.docker.internal:4000/rushlens'
+# API_BASE = 'http://host.docker.internal:4000/rushlens'
+API_BASE = 'http://web-api:4000'
+
+
 
 # VIEW maintenance history
 
 try:
-    response = requests.get(f'{API_BASE}/maintenance-log')
+    response = requests.get(f'{API_BASE}/rushlens/maintenance-log')
     if response.status_code == 200:
         logs = response.json()
 
@@ -59,4 +62,16 @@ with st.form('schedule_maintenance'):
     scheduled = st.form_submit_button('Schedule Maintenance')
 
     if scheduled:
-        st.success(f'New maintanance has been scheduled for Sensor {sensor_id}')
+        data = {
+            'sensor_id': sensor_id,
+            'performed_by': performed_by,
+            'action_type': action_type,
+            'notes': notes
+        }
+    
+        response = requests.post(f'{API_BASE}/rushlens/maintenance-log', json=data)
+        
+        if response.status_code == 200:
+            st.success(f'New maintenance has been scheduled for Sensor {sensor_id}')
+        else:
+            st.error(f'Failed to schedule maintenance: {response.text}')

@@ -5,14 +5,14 @@ from modules.nav import SideBarLinks
 
 SideBarLinks()
 st.title("Update Store")
-API_BASE = "http://localhost:4000"
+API_BASE = "http://web-api:4000"
 
 st.subheader("Store ID")
 store_id = st.number_input("Store ID *", min_value=1)
 
 store_data = None
 try:
-    r = requests.get(f"{API_BASE}/{store_id}")
+    r = requests.get(f"{API_BASE}/rushlens/store/{store_id}")
     if r.status_code == 200:
         store_data = r.json()
 except:
@@ -40,7 +40,7 @@ with st.form("update_store_form"):
             }
 
             try:
-                response = requests.put(f"{API_BASE}/{store_id}", json=payload)
+                response = requests.put(f"{API_BASE}/rushlens/store/{store_id}", json=payload)
                 if response.status_code == 200:
                     st.success(f"Store '{name}' updated successfully!")
                 else:

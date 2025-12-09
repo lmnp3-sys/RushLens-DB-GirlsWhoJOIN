@@ -5,7 +5,7 @@ import pandas as pd
 import logging
 from modules.nav import SideBarLinks
 
-API_BASE = "http://localhost:4000"
+API_BASE = "http://web-api:4000"
 logger = logging.getLogger(__name__)
 
 st.set_page_config(layout="wide")
@@ -16,7 +16,7 @@ st.write("Explore past patterns to plan your day more efficiently.")
 
 # GET historical data
 try:
-    resp = requests.get(f"{API_BASE}/store/historical")
+    resp = requests.get(f"{API_BASE}/rushlens/store/historical")
     if resp.status_code != 200:
         st.error("Historical data unavailable.")
         st.stop()

@@ -5,7 +5,7 @@ import plotly.express as px
 
 st.title('Community Foot Traffic Trends')
 
-API_BASE = "http://localhost:4000"
+API_BASE = "http://web-api:4000"
 
 data = [
     {"hour": 8, "total_customers": 12, "avg_wait_min": 5, "store_name": "Store A"},

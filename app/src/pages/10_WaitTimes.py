@@ -5,7 +5,7 @@ import pandas as pd
 import logging
 from modules.nav import SideBarLinks
 
-API_BASE = "http://localhost:4000"
+API_BASE = "http://web-api:4000"
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +16,7 @@ st.title("Curry Dining Wait Times")
 st.write("Check the current expected wait times across Curry locations.")
 
 try:
-    resp = requests.get(f"{API_BASE}/store/wait-times")
+    resp = requests.get(f"{API_BASE}/rushlens/store/wait-times")
     if resp.status_code != 200:
         st.error("Unable to retrieve wait times.")
         st.stop()
