@@ -17,7 +17,7 @@ store_id = st.number_input("Store ID *", min_value=1)
 st.write("Weekly Foot Traffic Stats")
 
 #asks for traffic_id, deafult is 1
-traffic_id = 1  # ← supply an actual ID or retrieve it dynamically
+traffic_id = 1 
 
 #analytics input
 try:
