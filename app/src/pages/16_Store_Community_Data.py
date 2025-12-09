@@ -22,7 +22,6 @@ try:
     if response.status_code == 200:
         df = pd.DataFrame(response.json())
 except:
-    st.warning("Could not fetch data from API, using local data.")
     #data from data frame columns
     st.metric("Total Customers", df['total_customers'].sum() if 'total_customers' in df.columns else "N/A")
     st.metric("Average Waiting Minutes", round(df['avg_wait_min'].mean(), 1) if 'avg_wait_min' in df.columns else "N/A")        
