@@ -16,15 +16,15 @@ st.write('')
 st.write('')
 st.write('### What would you like to do today?')
 
-if st.button('Check Curry Wait Times',
+if st.button('Student Login',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/10_WaitTimes.py')
+    st.switch_page('pages/10_Student_Login.py')
 
-if st.button('Find Study Spaces (Snell + Buildings)',
+if st.button('Update Your Profile',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/11_StudySpaces.py')
+    st.switch_page('pages/11_Student_Profile.py')
 
 if st.button('Explore Historical Traffic Trends',
              type='primary',
