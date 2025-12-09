@@ -8,7 +8,7 @@ from modules.nav import SideBarLinks
 import pandas as pd
 import requests
 
-API_BASE = "http://host.docker.internal:4000/rushlens"
+API_BASE = "http://localhost:4000/rushlens"
 
 st.set_page_config(layout='wide')
 SideBarLinks()

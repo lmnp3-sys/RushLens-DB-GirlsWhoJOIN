@@ -34,6 +34,24 @@ def get_sensor_data():
     finally:
         cursor.close()
 
+
+#Route 3: Get system alertss
+@analytics.route("/system-alerts", methods=["GET"])
+def get_system_alerts():
+    try:
+        cursor = db.get_db().cursor()
+
+        query = "SELECT * FROM SystemAlerts"
+        cursor.execute(query)
+        alerts = cursor.fetchall()
+        cursor.close()
+
+        return jsonify(alerts), 200
+
+    except Error as e:
+        return jsonify({"error": str(e)}), 500 
+
+
 # Route 3: Create new system alert
 @analytics.route("/system-alerts", methods=["POST"])
 def create_system_alert():
@@ -140,7 +158,6 @@ def delete_sensor(sensor_id):
     finally:
         cursor.close()
 
-
 # Route 6: Get all DataQualityCheck
 @analytics.route('/data-quality-checks', methods=['GET'])
 def get_all_data_quality_checks():
@@ -156,6 +173,3 @@ def get_all_data_quality_checks():
     finally:
          cursor.close()
 
-
-        
-        
