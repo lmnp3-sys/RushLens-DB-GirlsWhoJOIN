@@ -4,6 +4,9 @@
 import streamlit as st
 import requests
 import pandas as pd
+from modules.nav import SideBarLinks
+
+SideBarLinks()
 
 st.title('🚨System Alerts & Monitoring')
 
