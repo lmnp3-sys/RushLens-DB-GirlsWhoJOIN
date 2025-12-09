@@ -2,7 +2,6 @@ import streamlit as st
 import requests
 from modules.nav import SideBarLinks
 
-
 SideBarLinks()
 st.title("Update Store")
 API_BASE = "http://localhost:4000"
