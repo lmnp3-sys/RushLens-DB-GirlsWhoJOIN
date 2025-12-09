@@ -8,142 +8,88 @@ API_BASE = "http://localhost:4000"
 st.set_page_config(layout="wide")
 SideBarLinks()
 
-st.title("🏫 User & Store Activity Overview")
-st.write(
-    "Explore which users are linked to which stores based on the RushLens database. "
-    "This page uses GET, POST, PUT, and DELETE routes — no login required."
-)
+st.title("👤 Student Profile")
+st.write("View or update your student profile — no login required!")
 
-# ---------------------------------------------------------
-# LOAD DATA FUNCTIONS
-# ---------------------------------------------------------
-@st.cache_data
-def load_users():
+
+st.subheader("Lookup Existing Profile")
+
+lookup_id = st.number_input("Enter Customer ID:", min_value=1, step=1)
+
+if st.button("Load Profile"):
     try:
-        resp = requests.get(f"{API_BASE}/users")
+        resp = requests.get(f"{API_BASE}/customers/{lookup_id}")
         if resp.status_code == 200:
-            return pd.DataFrame(resp.json())
+            st.session_state.profile = resp.json()
+            st.success("Profile loaded!")
         else:
-            st.error("Unable to load users.")
-            return pd.DataFrame()
+            st.error("Profile not found.")
+            st.session_state.profile = None
     except Exception as e:
-        st.error(f"Error loading users: {e}")
-        return pd.DataFrame()
+        st.error(f"Backend error: {e}")
 
+# Show loaded profile
+if "profile" in st.session_state and st.session_state.profile:
+    st.write("### Profile Details")
+    st.json(st.session_state.profile)
 
-@st.cache_data
-def load_customers():
+    st.subheader("Update Profile")
+
+    first = st.text_input("First Name", st.session_state.profile["firstName"])
+    last = st.text_input("Last Name", st.session_state.profile["lastName"])
+    neuid = st.text_input("NEU ID", st.session_state.profile["neuID"])
+    store = st.number_input("Preferred Store ID", min_value=1, step=1,
+                             value=st.session_state.profile["store_id"])
+
+    if st.button("Save Updates"):
+        payload = {
+            "firstName": first,
+            "lastName": last,
+            "neuID": neuid,
+            "store_id": store
+        }
+        try:
+            update = requests.put(f"{API_BASE}/customers/{lookup_id}", json=payload)
+            if update.status_code == 200:
+                st.success("Profile updated successfully!")
+            else:
+                st.error(update.text)
+        except Exception as e:
+            st.error(f"Could not connect to backend: {e}")
+
+    if st.button("Delete Profile"):
+        try:
+            delete = requests.delete(f"{API_BASE}/customers/{lookup_id}")
+            if delete.status_code == 200:
+                st.success("Profile deleted!")
+                st.session_state.profile = None
+            else:
+                st.error(delete.text)
+        except Exception as e:
+            st.error(f"Could not connect to backend: {e}")
+
+st.subheader("Create New Profile")
+
+new_id = st.number_input("New Customer ID:", min_value=1, step=1)
+first = st.text_input("First Name")
+last = st.text_input("Last Name")
+neuid = st.text_input("NEU ID")
+store = st.number_input("Preferred Store ID", min_value=1, step=1)
+
+if st.button("Create Profile"):
+    payload = {
+        "customer_id": new_id,
+        "firstName": first,
+        "lastName": last,
+        "neuID": neuid,
+        "store_id": store
+    }
+
     try:
-        resp = requests.get(f"{API_BASE}/customers")
-        if resp.status_code == 200:
-            return pd.DataFrame(resp.json())
+        resp = requests.post(f"{API_BASE}/customers", json=payload)
+        if resp.status_code == 201:
+            st.success("Profile created successfully!")
         else:
-            st.error("Unable to load customers.")
-            return pd.DataFrame()
+            st.error(f"Error: {resp.text}")
     except Exception as e:
-        st.error(f"Error loading customers: {e}")
-        return pd.DataFrame()
-
-
-@st.cache_data
-def load_stores():
-    try:
-        resp = requests.get(f"{API_BASE}/stores")
-        if resp.status_code == 200:
-            return pd.DataFrame(resp.json())
-        else:
-            st.error("Unable to load stores.")
-            return pd.DataFrame()
-    except Exception as e:
-        st.error(f"Error loading stores: {e}")
-        return pd.DataFrame()
-
-users = load_users()
-customers = load_customers()
-stores = load_stores()
-
-# ---------------------------------------------------------
-# JOIN USERS → CUSTOMERS → STORES
-# ---------------------------------------------------------
-st.subheader("📌 User → Customer → Store Mapping")
-
-if not users.empty and not customers.empty and not stores.empty:
-
-    # Rename DB columns for readability
-    customers = customers.rename(columns={
-        "customer_id": "Customer ID",
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "store_id": "Store ID"
-    })
-
-    stores = stores.rename(columns={
-        "store_id": "Store ID",
-        "store_name": "Store Name",
-        "store_type": "Store Type"
-    })
-
-    # Merge: User ID == Customer ID
-    merged = pd.merge(users, customers, left_on="user_id", right_on="Customer ID", how="left")
-    merged = pd.merge(merged, stores, on="Store ID", how="left")
-
-    st.dataframe(merged[[
-        "user_id", "accountType", 
-        "First Name", "Last Name", 
-        "Store ID", "Store Name", "Store Type"
-    ]], use_container_width=True)
-
-else:
-    st.error("Missing data. Check backend routes.")
-
-# ---------------------------------------------------------
-# CREATE USER (POST)
-# ---------------------------------------------------------
-st.markdown("---")
-st.subheader("➕ Create New User")
-
-new_id = st.number_input("User ID", min_value=1)
-new_type = st.text_input("Account Type (ex: student, owner, manager)")
-
-if st.button("Create User"):
-    body = {"user_id": int(new_id), "accountType": new_type}
-    resp = requests.post(f"{API_BASE}/users", json=body)
-
-    if resp.status_code == 201:
-        st.success("User created successfully!")
-    else:
-        st.error(f"Failed to create user: {resp.text}")
-
-# ---------------------------------------------------------
-# UPDATE USER (PUT)
-# ---------------------------------------------------------
-st.markdown("---")
-st.subheader("✏️ Update User Account Type")
-
-update_id = st.number_input("User ID to update", min_value=1)
-update_type = st.text_input("New Account Type")
-
-if st.button("Update User"):
-    body = {"accountType": update_type}
-    resp = requests.put(f"{API_BASE}/users/{int(update_id)}", json=body)
-
-    if resp.status_code == 200:
-        st.success("User updated successfully!")
-    else:
-        st.error(f"Failed to update user: {resp.text}")
-
-# ---------------------------------------------------------
-# DELETE USER (DELETE)
-# ---------------------------------------------------------
-st.markdown("---")
-st.subheader("🗑 Delete User")
-
-delete_id = st.number_input("User ID to delete", min_value=1, key="delete_user")
-
-if st.button("Delete User"):
-    resp = requests.delete(f"{API_BASE}/users/{int(delete_id)}")
-
-    if resp.status_code == 200:
-        st.success("User deleted successfully!")
-    else:
-        st.error(f"Failed to delete user: {resp.text}")
+        st.error(f"Could not connect to backend: {e}")
