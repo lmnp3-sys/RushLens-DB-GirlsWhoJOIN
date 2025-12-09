@@ -9,7 +9,7 @@ st.set_page_config(layout='wide')
 SideBarLinks()
 
 
-logger.info("Loading Store home page")
+logger.info("Loading Store homepage")
 
 #title 
 st.title(f"Welcome!")
