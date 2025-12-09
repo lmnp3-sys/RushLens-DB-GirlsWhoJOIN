@@ -49,5 +49,5 @@ with st.form("update_store_form"):
                 st.error("Error connecting to API.")
 
 #returns to store owner home page
-if st.button("Return to Store Directory"):
+if st.button("Return to Store Homepage"):
     st.switch_page("pages/13_Store_Owner_Home.py")
