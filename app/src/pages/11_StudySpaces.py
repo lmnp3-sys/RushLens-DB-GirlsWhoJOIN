@@ -20,7 +20,6 @@ try:
         st.stop()
 
     df = pd.DataFrame(resp.json())
-
 except Exception as e:
     st.error(f"Error contacting server: {e}")
     st.stop()
