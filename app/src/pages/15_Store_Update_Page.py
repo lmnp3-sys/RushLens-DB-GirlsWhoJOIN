@@ -2,7 +2,6 @@ import streamlit as st
 import requests
 from modules.nav import SideBarLinks
 
-
 SideBarLinks()
 st.title("Update Store")
 API_BASE = "http://web-api:4000"
@@ -18,6 +17,7 @@ try:
 except:
     store_data = None
 
+#input form with attributes
 with st.form("update_store_form"):
     st.subheader("Store Information")
 
@@ -48,5 +48,6 @@ with st.form("update_store_form"):
             except:
                 st.error("Error connecting to API.")
 
-if st.button("Return to Store Directory"):
-    st.switch_page("pages/Store_Owner_Home.py")
+#returns to store owner home page
+if st.button("Return to Store Homepage"):
+    st.switch_page("pages/13_Store_Owner_Home.py")
