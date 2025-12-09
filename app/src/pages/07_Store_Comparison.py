@@ -8,7 +8,7 @@ from modules.nav import SideBarLinks
 import pandas as pd
 import requests
 
-API_BASE = "http://host.docker.internal:4000/rushlens"
+API_BASE = "http://web-api:4000"
 
 st.set_page_config(layout='wide')
 SideBarLinks()
@@ -18,7 +18,7 @@ st.write("A simple overview of stores based on their sensors.")
 
 # Get sensor devices (assuming each has a store_id)
 try:
-    resp = requests.get(f"{API_BASE}/sensor-device")
+    resp = requests.get(f"{API_BASE}/rushlens/sensor-device")
     if resp.status_code != 200:
         st.error(f"Error fetching sensors: {resp.status_code}")
         st.stop()

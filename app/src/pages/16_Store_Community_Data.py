@@ -11,7 +11,7 @@ SideBarLinks()
 
 st.title('Community Foot Traffic Trends')
 
-API_BASE = "http://localhost:4000"
+API_BASE = "http://web-api:4000"
 
 #sample data in case api unretrivable
 data = [

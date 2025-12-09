@@ -1,7 +1,7 @@
 # BLUEPRINT 3 User/Customer
 
 from flask import Blueprint, request, jsonify
-from db_connection import db
+from ..db_connection import db
 from mysql.connector import Error
 
 user_customer = Blueprint("user_customer", __name__)
@@ -165,7 +165,9 @@ def create_customer():
     except Error as e:
         return jsonify({"error": str(e)}), 500
     finally:
-        cursor.close()
+        if 'cursor' in locals():
+         cursor.close()
+
 
 
 # Route 9: UPDATE customer

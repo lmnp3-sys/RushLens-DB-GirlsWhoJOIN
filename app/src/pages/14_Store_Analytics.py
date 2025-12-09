@@ -8,7 +8,7 @@ st.set_page_config(layout='wide')
 SideBarLinks()
 
 st.title("My Analytics")
-API_BASE = "http://localhost:4000"
+API_BASE = "http://web-api:4000"
 
 #headers
 st.subheader("Store ID")
@@ -21,7 +21,7 @@ traffic_id = 1  # ← supply an actual ID or retrieve it dynamically
 
 #analytics input
 try:
-    r = requests.get(f"{API_BASE}/{store_id}")
+    r = requests.get(f"{API_BASE}/rushlens/store/{store_id}")
     if r.status_code == 200:
         store_data = r.json()
 except: 
@@ -44,7 +44,7 @@ if submitted:
     if not store_data:
         st.warning("Invalid Store ID.")
     else:
-        resp = requests.get(f"{API_BASE}/{store_id}")
+        resp = requests.get(f"{API_BASE}/rushlens/store/{store_id}")
         data = resp.json()
     if not data:
         st.warning("No foot traffic stats are available.")

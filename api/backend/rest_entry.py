@@ -4,11 +4,11 @@ import os
 import logging
 from logging.handlers import RotatingFileHandler
 
-from db_connection import db
-from rushlens.location_store_routes import location_store
-from rushlens.analytics_routes import analytics
-from rushlens.traffic_input_routes import traffic_input
-from rushlens.user_customer_routes import user_customer
+from .db_connection import db
+from .rushlens.location_store_routes import location_store
+from .rushlens.analytics_routes import analytics
+from .rushlens.traffic_input_routes import traffic_input
+from .rushlens.user_customer_routes import user_customer
 
 def create_app():
     app = Flask(__name__)
@@ -52,8 +52,6 @@ def create_app():
     return app
 
     
-
-
 
 
 def setup_logging(app):
