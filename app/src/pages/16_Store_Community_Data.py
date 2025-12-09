@@ -2,6 +2,12 @@ import streamlit as st
 import requests
 import pandas as pd
 import plotly.express as px
+from modules.nav import SideBarLinks
+
+st.set_page_config(layout='wide')
+
+SideBarLinks()
+
 
 st.title('Community Foot Traffic Trends')
 
