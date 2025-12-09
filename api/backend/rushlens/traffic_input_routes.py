@@ -1,7 +1,7 @@
 # BLUEPRINT 4 Traffic
 
 from flask import Blueprint, jsonify, request
-from db_connection import db
+from ..db_connection import db
 from mysql.connector import Error
 
 # Create the blueprint 

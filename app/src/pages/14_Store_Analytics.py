@@ -10,53 +10,27 @@ SideBarLinks()
 st.title("My Analytics")
 API_BASE = "http://web-api:4000"
 
-#headers
 st.subheader("Store ID")
-store_id = st.number_input("Store ID *", min_value=1)
+store_id = st.number_input("Store ID *", min_value=1, value=1)
 
-st.write("Weekly Foot Traffic Stats")
-
-#asks for traffic_id, deafult is 1
-traffic_id = 1  # ← supply an actual ID or retrieve it dynamically
-
-#analytics input
-try:
-    r = requests.get(f"{API_BASE}/rushlens/store/{store_id}")
-    if r.status_code == 200:
-        store_data = r.json()
-except: 
-    store_data = None
-
-with st.form("analytics_form"):
-    total_visits = st.number_input(
-        "Total Visits This Week", 
-        value=store_data.get("total_visits", 0) if store_data else 0, 
-        min_value=0
-    )
-    avg_wait = st.number_input(
-        "Average Wait Time (minutes)", 
-        value=store_data.get("avg_wait_min", 0) if store_data else 0, 
-        min_value=0
-    )
-
-    submitted = st.form_submit_button("Load Info")
-if submitted: 
-    if not store_data:
-        st.warning("Invalid Store ID.")
-    else:
-        resp = requests.get(f"{API_BASE}/rushlens/store/{store_id}")
-        data = resp.json()
-    if not data:
-        st.warning("No foot traffic stats are available.")
-        st.stop()
-    df = pd.DataFrame(data)
-    if "store_id" in df.columns and "avg_wait_min" in df.columns and "store_name" in df.columns:
-        st.subheader("This week's wait")
+if st.button("Load Store Analytics"):
     try:
-        st.bar_chart(df.set_index("store_name")["avg_wait_min"])
+        resp = requests.get(f"{API_BASE}/rushlens/store/{store_id}")
+        
+        if resp.status_code == 200:
+            store_data = resp.json()
+            
+            st.success(f"Loaded: {store_data.get('store_name', 'Unknown')}")
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                st.metric("Total Visits", store_data.get('total_visits', 'N/A'))
+            with col2:
+                st.metric("Avg Wait (min)", store_data.get('avg_wait_min', 'N/A'))
+        else:
+            st.error(f"Store {store_id} not found")
     except Exception as e:
-        st.info(f"Could not plot average wait times: {e}")
+        st.error(f"Error: {e}")
 
-#returns to store owner hoem page
-if st.button("Return to Store Homepage?"):
+if st.button("Return to Store Homepage"):
     st.switch_page("pages/13_Store_Owner_Home.py")

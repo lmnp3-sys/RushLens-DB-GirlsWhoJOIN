@@ -9,7 +9,8 @@ import pandas as pd
 import requests
 
 # 
-API_BASE = "http://localhost:4000"
+API_BASE = "http://web-api:4000"
+
 
 st.set_page_config(layout='wide')
 SideBarLinks()

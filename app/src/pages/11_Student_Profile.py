@@ -3,7 +3,7 @@ import requests
 import pandas as pd
 from modules.nav import SideBarLinks
 
-API_BASE = "http://localhost:4000"
+API_BASE = "http://web-api:4000"
 
 st.set_page_config(layout="wide")
 SideBarLinks()
