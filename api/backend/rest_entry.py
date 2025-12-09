@@ -54,8 +54,6 @@ def create_app():
     
 
 
-
-
 def setup_logging(app):
     """
     Configure logging for the Flask application in both files and console (Docker Desktop for this project)

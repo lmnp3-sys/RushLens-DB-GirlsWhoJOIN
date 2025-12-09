@@ -10,7 +10,7 @@ import pandas as pd
 import requests
 from datetime import datetime
 
-API_BASE = "http://localhost:4000/rushlens"
+API_BASE = "http://web-api:4000"
 
 st.set_page_config(layout="wide")
 SideBarLinks()
@@ -22,12 +22,7 @@ st.write("Monitor active warnings, system issues, and sensor problems in real ti
 @st.cache_data(ttl=30)
 def fetch_alerts(resolved_filter=None):
     try:
-        url = f"{API_BASE}/system-alerts"
-        params = {}
-        if resolved_filter is not None:
-            params['resolved'] = 'true' if resolved_filter else 'false'
-        
-        resp = requests.get(url, params=params)
+        resp = requests.get(f"{API_BASE}/rushlens/system-alerts")
         if resp.status_code != 200:
             try:
                 err = resp.json().get("error", f"Error {resp.status_code}")

@@ -9,7 +9,7 @@ import pandas as pd
 import requests
 
 # 
-API_BASE = "http://localhost:4000/rushlens"
+API_BASE = "http://web-api:4000"
 
 st.set_page_config(layout='wide')
 SideBarLinks()
@@ -19,7 +19,7 @@ st.write("See basic trends from sensor data.")
 
 # --- Call your Flask backend to get sensor data ---
 try:
-    resp = requests.get(f"{API_BASE}/sensor-data")
+    resp = requests.get(f"{API_BASE}/rushlens/sensor-data")
     if resp.status_code != 200:
         st.error(f"Error fetching sensor data: {resp.status_code}")
         st.stop()

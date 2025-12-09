@@ -4,10 +4,16 @@
 import streamlit as st
 import requests
 import pandas as pd
+from modules.nav import SideBarLinks
+
+SideBarLinks()
 
 st.title('📊Data Quality & Store Management')
 
-API_BASE = 'http://host.docker.internal:4000/rushlens'
+# API_BASE = 'http://host.docker.internal:4000/rushlens'
+API_BASE = 'http://web-api:4000'
+
+
 
 tab1, tab2, tab3 = st.tabs(['Data Quality Checks', 
                             'Add New Store',
@@ -19,7 +25,7 @@ with tab1:
     st.header('Data Quality Check Results')
 
     try:
-        response = requests.get(f'{API_BASE}/data-quality-checks')
+        response = requests.get(f'{API_BASE}/rushlens/data-quality-checks')
         if response.status_code == 200:
             checks = response.json()
 
@@ -73,7 +79,7 @@ with tab2:
                 'location_id': location_id
             }
 
-            reponse = requests.post(f'{API_BASE}/store', json=data)
+            response = requests.post(f'{API_BASE}/rushlens/store', json=data)
 
             if response.status_code == 200:
                 st.success(f'Successfully added {store_name}!')
@@ -87,7 +93,7 @@ with tab3:
 
     # Get all stores
     try:
-        response = requests.get(f'{API_BASE}/store')
+        response = requests.get(f'{API_BASE}/rushlens/store')
         if response.status_code == 200:
             stores = response.json()
 
@@ -122,7 +128,7 @@ with tab3:
                             'capacity': new_capactity
                         }
 
-                        response = requests.put(f'{API_BASE}/store/{store_id}', json=data)
+                        response = requests.put(f'{API_BASE}/rushlens/store/{store_id}', json=data)
 
                         if response.status_code == 200:
                             st.success(f'Updated {selected_store} successfully!')

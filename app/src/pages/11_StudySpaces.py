@@ -4,7 +4,7 @@ import pandas as pd
 import logging
 from modules.nav import SideBarLinks
 
-API_BASE = "http://localhost:4000"
+API_BASE = "http://web-api:4000"
 logger = logging.getLogger(__name__)
 
 st.set_page_config(layout="wide")
@@ -14,7 +14,7 @@ st.title("Study & Seating Availability")
 st.write("Real-time occupancy for Snell and other common study buildings.")
 
 try:
-    resp = requests.get(f"{API_BASE}/location/occupancy")
+    resp = requests.get(f"{API_BASE}/rushlens/location/occupancy")
     if resp.status_code != 200:
         st.error("Could not load occupancy data.")
         st.stop()
