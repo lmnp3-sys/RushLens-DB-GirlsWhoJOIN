@@ -67,8 +67,8 @@ with st.form('schedule_maintenance'):
     if scheduled:
         data = {
             'sensor_id': sensor_id,
-            'performed_by': performed_by,
-            'action_type': action_type,
+            'performedBy': performed_by,
+            'actionType': action_type,
             'notes': notes
         }
     

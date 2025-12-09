@@ -3,7 +3,7 @@ import streamlit as st
 import requests
 from modules.nav import SideBarLinks
 
-API_BASE = "http://localhost:4000"
+API_BASE = "http://web-api:4000"
 
 st.set_page_config(layout="wide")
 SideBarLinks()
@@ -18,7 +18,7 @@ customer_id = st.number_input("Enter your Customer ID:", min_value=1, step=1)
 
 if st.button("Log In"):
     try:
-        url = f"{API_BASE}/customers/{customer_id}"
+        url = f"{API_BASE}/rushlens/customers/{customer_id}"
         resp = requests.get(url)
 
         if resp.status_code == 200:
@@ -54,7 +54,7 @@ if st.button("Create Profile"):
     }
 
     try:
-        resp = requests.post(f"{API_BASE}/customers", json=payload)
+        resp = requests.post(f"{API_BASE}/rushlens/customers", json=payload)
 
         if resp.status_code == 201:
             st.success("Profile created successfully!")
