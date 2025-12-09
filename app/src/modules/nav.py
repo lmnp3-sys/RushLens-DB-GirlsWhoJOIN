@@ -17,8 +17,8 @@ def AboutPageNav():
 
 def StudentHomeNav():
     st.sidebar.page_link("pages/09_Student_Home.py", label="Student Dashboard", icon="🎓")
-    st.sidebar.page_link("pages/10_WaitTimes.py", label="Wait Times", icon="⏱️")
-    st.sidebar.page_link("pages/11_StudySpaces.py", label="Study Spaces", icon="📚")
+    st.sidebar.page_link("pages/10_Student_Login.py", label="Student Login", icon="👤")
+    st.sidebar.page_link("pages/11_Student_Profile.py", label="Update your Profile", icon="🪪")
     st.sidebar.page_link("pages/12_HistoricalTrends.py", label="Historical Trends", icon="📈")
 
 
