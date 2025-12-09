@@ -122,3 +122,68 @@ def delete_store(store_id):
 
     return jsonify({'message': 'Store deleted'})
 
+maintenance = Blueprint('maintenance', __name__)
+
+
+# Route 8: GET all maintenance logs
+@location_store.route('/maintenance-log', methods=['GET'])
+def get_all_maintenance():
+    try:
+        cursor = db.get_db().cursor()
+        query = '''
+            SELECT 
+                maintenance_id,
+                sensor_id,
+                performedBy,
+                action_type,
+                maintenance_date,
+                notes
+            FROM MaintenanceLog
+            ORDER BY maintenance_date DESC
+        '''
+        cursor.execute(query)
+        
+        results = cursor.fetchall()
+        
+        maintenance_logs = []
+        for row in results:
+            maintenance_logs.append({
+                'maintenance_id': row[0],
+                'sensor_id': row[1],
+                'performedBy': row[2],
+                'actionType': row[3],  # Match your Streamlit code
+                'maintenance_date': row[4],
+                'notes': row[5]
+            })
+        
+        return jsonify(maintenance_logs), 200
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# Route 9: POST new maintenance log
+@location_store.route('/maintenance-log', methods=['POST'])
+def create_maintenance():
+    try:
+        data = request.get_json()
+        cursor = db.get_db().cursor()
+        
+        query = '''
+            INSERT INTO MaintenanceLog 
+            (sensor_id, performedBy, actionType, notes)
+            VALUES (%s, %s, %s, %s)
+        '''
+        
+        cursor.execute(query, (
+            data['sensor_id'],
+            data['performedBy'],
+            data['actionType'],
+            data['notes']
+        ))
+        
+        db.get_db().commit()
+        return jsonify({'message': 'Maintenance scheduled successfully'}), 200
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
