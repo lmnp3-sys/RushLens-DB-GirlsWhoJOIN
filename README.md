@@ -3,6 +3,9 @@
 RushLens allows users to understand how busy a space is without even being there. Driven by both user-entered and sensor-generated data, RushLens collects and analyzes data patterns to present high-level information that informs user decision-making. With this, users can see how busy places like Curry, Starbucks, Snell, or even the laundry rooms, will be before users even get there. This addresses pain points for a variety of demographics: allowing business owners to see a summarized view of their busiest times and how users interact with their respective business page on the app, and creating a way for customers to optimize their decision-making before physically arriving at a business. 
 
 RushLens also supports the system administrators and data analysts who keep the platform running smoothly. System admins use internal tools to connect devices, check that sensors are working properly, and make sure data stays accurate and secure. Data analysts will also review traffic patterns over time to identify when spaces are busiest and share findings that help managers improve their operations. For everyday users, RushLens takes all this behind-the-scenes complexity and presents it as simple, useful information: how long the wait will be, how many people are currently in a space, and whether they're likely to find an open seat or machine. By turning unreliable guessing into clear predictions, RushLens helps students and customers make better choices about when and where to go, while saving time and improving their overall experience!
+## YouTube Video
+https://youtu.be/Cv5bpFcYvvQ 
+
 
 ## Prerequisites
 
